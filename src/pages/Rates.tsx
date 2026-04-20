@@ -3,20 +3,20 @@ import { motion } from 'motion/react';
 import { Diamond, Shield, Clock, Coffee, Plane, Hotel } from 'lucide-react';
 
 const COMMON_RATES = [
-  { duration: "1 Hour", rate: "£400", incall: true, outcall: true },
-  { duration: "2 Hours", rate: "£700", incall: true, outcall: true },
-  { duration: "3 Hours", rate: "£1,000", incall: true, outcall: true },
-  { duration: "Evening (4 hrs)", rate: "£1,000", incall: true, outcall: true },
-  { duration: "Overnight", rate: "£2,500", incall: false, outcall: true },
-  { duration: "24 Hours", rate: "£4,000", incall: false, outcall: true },
+  { duration: "1 Hour", incall: "£150", outcall: "£180" },
+  { duration: "2 Hours", incall: "£280", outcall: "£320" },
+  { duration: "3 Hours", incall: "£400", outcall: "£450" },
+  { duration: "Evening (4 hrs)", incall: "£500", outcall: "£560" },
+  { duration: "Overnight", incall: "£800", outcall: "£900" },
+  { duration: "Weekend", incall: "POA", outcall: "POA" },
 ];
 
 export function Rates() {
   return (
-    <div className="pt-32 pb-32 min-h-screen bg-bg px-15">
+    <div className="pt-32 pb-32 min-h-screen bg-bg px-8 md:px-15">
       <div className="max-w-5xl mx-auto">
         <header className="text-center mb-32">
-          <h1 className="text-6xl md:text-[100px] font-display text-accent mb-8 italic leading-none">Rates & Services</h1>
+          <h1 className="text-5xl md:text-[100px] font-display text-accent mb-8 italic leading-none">Rates & Services</h1>
           <p className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed">
             Our rates reflect the exceptional quality, education, and social grace of our companions. Transparent pricing for a seamless experience.
           </p>
@@ -46,28 +46,38 @@ export function Rates() {
           viewport={{ once: true }}
           className="bg-[#111] border border-accent/20 p-8 md:p-20 rounded-none shadow-2xl overflow-hidden relative"
         >
-          <h2 className="text-3xl font-display text-accent mb-16 text-center tracking-[0.2em] uppercase italic">London Standard Rates</h2>
+          <h2 className="text-3xl font-display text-accent mb-16 text-center tracking-[0.2em] uppercase italic">Leeds Standard Rates</h2>
           
-          <div className="space-y-8">
-            {COMMON_RATES.map((item, idx) => (
-              <div key={idx} className="flex justify-between items-center border-b border-white/10 pb-8 group">
-                <div>
-                  <h3 className="text-2xl font-display text-white group-hover:text-accent transition-colors italic">{item.duration}</h3>
-                  <p className="text-[10px] text-white/40 uppercase tracking-[0.2em] mt-2 font-sans">
-                    {item.incall && "Incall"} {item.incall && item.outcall && " / "} {item.outcall && "Outcall Available"}
-                  </p>
-                </div>
-                <div className="text-3xl font-display text-accent italic">
-                  {item.rate}
-                </div>
+          <div className="w-full overflow-x-auto">
+            <div className="min-w-150">
+              <div className="grid grid-cols-3 border-b border-white/10 pb-6 mb-8">
+                <div className="text-[11px] uppercase tracking-[0.2em] text-white/30 font-display italic">Duration</div>
+                <div className="text-[11px] uppercase tracking-[0.2em] text-white/30 font-display italic text-center">In-Call</div>
+                <div className="text-[11px] uppercase tracking-[0.2em] text-white/30 font-display italic text-right">Out-Call</div>
               </div>
-            ))}
+
+              <div className="space-y-6">
+                {COMMON_RATES.map((item, idx) => (
+                  <div key={idx} className="grid grid-cols-3 items-center border-b border-white/5 pb-6 group transition-colors hover:bg-white/5 -mx-4 px-4">
+                    <div className="text-xl md:text-2xl font-display text-white group-hover:text-accent transition-colors italic">
+                      {item.duration}
+                    </div>
+                    <div className="text-xl md:text-2xl font-display text-white/80 text-center italic">
+                      {item.incall}
+                    </div>
+                    <div className="text-xl md:text-2xl font-display text-accent text-right italic">
+                      {item.outcall}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="mt-16 p-8 bg-black/50 border border-gold/5 rounded-sm">
             <h4 className="text-gold font-serif text-lg mb-4 italic">International Travel & Long Term</h4>
             <p className="text-neutral-400 text-sm font-light leading-relaxed">
-              For bookings outside of London, travel companions, or multiple day arrangements, please contact our concierge directly. 
+              For bookings outside of Leeds, travel companions, or multiple day arrangements, please contact our concierge directly. 
               Travel expenses and accommodation are to be provided by the client in addition to the standard daily rate.
             </p>
           </div>
@@ -79,7 +89,7 @@ export function Rates() {
               <Hotel size={24} /> Private Bookings
             </h3>
             <p className="text-neutral-400 font-light leading-relaxed">
-              We offer exclusive incall locations in the heart of Mayfair and Kensington. Discreet, secure, and luxurious environments for your relaxation.
+              We offer exclusive incall locations in the heart of Leeds Central and Headingley. Discreet, secure, and luxurious environments for your relaxation.
             </p>
           </div>
           <div className="p-10 border border-neutral-900 bg-neutral-950 rounded-sm">

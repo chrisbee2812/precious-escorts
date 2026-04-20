@@ -1,6 +1,8 @@
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Escort } from '@/src/constants';
-import { X, MapPin, Languages, Ruler, Heart, Sparkles } from 'lucide-react';
+import { X, MapPin, Languages, Ruler, Heart, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { cn } from '@/src/lib/utils';
 
 interface EscortModalProps {
   escort: Escort | null;
@@ -8,7 +10,22 @@ interface EscortModalProps {
 }
 
 export function EscortModal({ escort, onClose }: EscortModalProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   if (!escort) return null;
+
+  // Use exactly 5 images total (thumbnail + first 4 gallery images)
+  const allImages = [escort.thumbnail, ...escort.gallery].slice(0, 5);
+
+  const nextImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setActiveIndex((prev) => (prev + 1) % allImages.length);
+  };
+
+  const prevImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setActiveIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+  };
 
   return (
     <AnimatePresence>
@@ -35,21 +52,51 @@ export function EscortModal({ escort, onClose }: EscortModalProps) {
           </button>
 
           {/* Left: Images */}
-          <div className="w-full md:w-100 bg-black flex flex-col">
-            <div className="flex-1 overflow-y-auto custom-scrollbar">
-              <img 
-                src={escort.thumbnail} 
-                alt={escort.name}
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-              <div className="grid grid-cols-4 border-t border-white/10">
-                {escort.gallery.map((img, idx) => (
-                  <div key={idx} className="aspect-square border-r border-white/10 opacity-50 hover:opacity-100 transition-opacity">
-                    <img src={img} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                  </div>
-                ))}
-              </div>
+          <div className="w-full md:w-112.5 bg-black flex flex-col">
+            <div className="relative flex-1 group overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.img 
+                  key={activeIndex}
+                  src={allImages[activeIndex]} 
+                  alt={escort.name}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="w-full h-100 md:h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </AnimatePresence>
+
+              {/* Navigation Arrows */}
+              <button 
+                onClick={prevImage}
+                className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 text-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/80"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button 
+                onClick={nextImage}
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 text-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/80"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
+
+            {/* Thumbnails beneath - all 5 images */}
+            <div className="grid grid-cols-5 border-t border-white/10 shrink-0">
+              {allImages.map((img, idx) => (
+                <button 
+                  key={idx} 
+                  onClick={() => setActiveIndex(idx)}
+                  className={cn(
+                    "aspect-square border-r border-white/10 transition-all duration-300 overflow-hidden",
+                    activeIndex === idx ? "opacity-100 border-b-2 border-b-accent" : "opacity-40 hover:opacity-100"
+                  )}
+                >
+                  <img src={img} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                </button>
+              ))}
             </div>
           </div>
 
@@ -70,15 +117,19 @@ export function EscortModal({ escort, onClose }: EscortModalProps) {
               <div className="space-y-4 mb-12">
                 <div className="flex justify-between border-b border-white/10 py-3 text-xs uppercase tracking-widest text-white/70">
                   <span>In-Call (2 Hours)</span>
-                  <span className="text-accent italic">£600</span>
+                  <span className="text-accent italic">£280</span>
                 </div>
                 <div className="flex justify-between border-b border-white/10 py-3 text-xs uppercase tracking-widest text-white/70">
                   <span>Out-Call (2 Hours)</span>
+                  <span className="text-accent italic">£320</span>
+                </div>
+                <div className="flex justify-between border-b border-white/10 py-3 text-xs uppercase tracking-widest text-white/70">
+                  <span>In-Call (Overnight)</span>
                   <span className="text-accent italic">£800</span>
                 </div>
                 <div className="flex justify-between border-b border-white/10 py-3 text-xs uppercase tracking-widest text-white/70">
-                  <span>Overnight</span>
-                  <span className="text-accent italic">£2,500</span>
+                  <span>Out-Call (Overnight)</span>
+                  <span className="text-accent italic">£900</span>
                 </div>
               </div>
 

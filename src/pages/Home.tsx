@@ -7,14 +7,26 @@ import { EscortCard } from '@/src/components/EscortCard';
 import { EscortModal } from '@/src/components/EscortModal';
 
 export function Home() {
-  const [selectedEscort, setSelectedEscort] = useState<typeof ESCORTS[number] | null>(null);
+  const [selectedEscort, setSelectedEscort] = useState<any>(null);
+  const [lastSelectedId, setLastSelectedId] = useState<string | null>(null);
+
+  const handleClose = () => {
+    if (selectedEscort) {
+      setLastSelectedId(selectedEscort.id);
+      setTimeout(() => setLastSelectedId(null), 800);
+    }
+    setSelectedEscort(null);
+  };
 
   return (
     <div className="overflow-x-hidden">
-      <EscortModal escort={selectedEscort} onClose={() => setSelectedEscort(null)} />
+      <EscortModal 
+        escort={selectedEscort} 
+        onClose={handleClose} 
+      />
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center px-15 md:px-30 bg-bg overflow-hidden pt-20">
+      <section className="relative h-screen flex items-center px-8 md:px-30 bg-bg overflow-hidden pt-20">
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-40">
           <img 
             src="https://picsum.photos/seed/luxury-bg/1920/1080?blur=5" 
@@ -29,7 +41,7 @@ export function Home() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2 }}
-            className="text-7xl md:text-[120px] font-display text-accent mb-8 leading-[0.9] tracking-tighter"
+            className="text-5xl sm:text-7xl md:text-[120px] font-display text-accent mb-8 leading-[0.9] tracking-tighter"
           >
             Unrivaled <br/>Sophistication.
           </motion.h1>
@@ -63,12 +75,19 @@ export function Home() {
       <section className="py-32 px-15 bg-bg relative border-t border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-20 items-start">
           <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-8">
-            {ESCORTS.map((escort) => (
-              <EscortCard 
-                key={escort.id} 
-                escort={escort} 
-                onClick={() => setSelectedEscort(escort)} 
-              />
+            {ESCORTS.filter(e => e.featured).map((escort) => (
+              <div 
+                key={escort.id}
+                style={{ 
+                  zIndex: (selectedEscort?.id === escort.id || lastSelectedId === escort.id) ? 50 : 1,
+                  position: 'relative'
+                }}
+              >
+                <EscortCard 
+                  escort={escort} 
+                  onClick={() => setSelectedEscort(escort)} 
+                />
+              </div>
             ))}
           </div>
           

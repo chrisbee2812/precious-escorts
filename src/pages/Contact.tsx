@@ -1,6 +1,6 @@
-import type { ReactNode } from 'react';
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send, Diamond, Heart } from 'lucide-react';
+import type { ReactNode } from 'react';
 
 export function Contact() {
   return (
@@ -30,12 +30,12 @@ export function Contact() {
                 <ContactItem 
                   icon={<Mail size={18} strokeWidth={1} />} 
                   label="Email Enquiry"
-                  value="concierge@velvetrose.com"
+                  value="concierge@preciousescorts.com"
                 />
                 <ContactItem 
                   icon={<MapPin size={18} strokeWidth={1} />} 
                   label="Office"
-                  value="Mayfair, London, UK"
+                  value="Leeds Central, West Yorkshire, UK"
                 />
               </div>
             </div>
@@ -88,15 +88,13 @@ export function Contact() {
   );
 }
 
-function ContactItem({
-  icon,
-  label,
-  value,
-}: {
-  icon: ReactNode;
-  label: string;
-  value: string;
-}) {
+type ContactItemProps = {
+  icon: ReactNode
+  label: string
+  value: string
+}
+
+function ContactItem({ icon, label, value }: ContactItemProps) {
   return (
     <div className="flex gap-8 items-start group border-l border-white/5 pl-8 py-2">
       <div className="text-accent group-hover:scale-110 transition-transform duration-500">
@@ -149,7 +147,7 @@ export function WorkWithUs() {
               <label className="text-[10px] uppercase tracking-[0.2em] text-accent font-sans">About You & Experience</label>
               <textarea 
                 rows={5}
-                placeholder="Tell us about yourself, your languages, and why you'd like to work with Velvet Rose..."
+                placeholder="Tell us about yourself, your languages, and why you'd like to work with Precious Escorts..."
                 className="w-full bg-black/40 border border-white/10 focus:border-accent p-6 text-white outline-none transition-colors rounded-none font-sans font-light resize-none text-sm"
               />
             </div>
@@ -178,7 +176,12 @@ export function WorkWithUs() {
   );
 }
 
-const Benefit = ({ title, desc }: { title: string; desc: string }) => (
+type BenefitProps = {
+  title: string
+  desc: string
+}
+
+const Benefit = ({ title, desc }: BenefitProps) => (
   <div className="border-l border-white/5 pl-8 py-4">
     <h4 className="text-white font-display text-2xl mb-4 italic">{title}</h4>
     <p className="text-white/40 text-sm font-sans font-light">{desc}</p>

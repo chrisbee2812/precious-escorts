@@ -1,17 +1,30 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { ESCORTS } from '@/src/constants';
+import { ESCORTS, Escort } from '@/src/constants';
 import { EscortCard } from '@/src/components/EscortCard';
 import { EscortModal } from '@/src/components/EscortModal';
 import { Diamond } from 'lucide-react';
 
 export function Gallery() {
-  const [selectedEscort, setSelectedEscort] = useState<typeof ESCORTS[number] | null>(null);
+  const [selectedEscort, setSelectedEscort] = useState<Escort | null>(null);
+  const [lastSelectedId, setLastSelectedId] = useState<string | null>(null);
+
+  const handleClose = () => {
+    if (selectedEscort) {
+      setLastSelectedId(selectedEscort.id);
+      // Clear lastSelectedId after animation duration (approx 800ms to be safe)
+      setTimeout(() => setLastSelectedId(null), 800);
+    }
+    setSelectedEscort(null);
+  };
 
   return (
     <div className="pt-32 pb-32 min-h-screen bg-bg px-15">
-      <EscortModal escort={selectedEscort} onClose={() => setSelectedEscort(null)} />
+      <EscortModal 
+        escort={selectedEscort} 
+        onClose={handleClose} 
+      />
 
       <div className="max-w-7xl mx-auto">
         <header className="text-center mb-32">
@@ -39,6 +52,10 @@ export function Gallery() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
+              style={{ 
+                zIndex: (selectedEscort?.id === escort.id || lastSelectedId === escort.id) ? 50 : 1,
+                position: 'relative'
+              }}
             >
               <EscortCard 
                 escort={escort} 

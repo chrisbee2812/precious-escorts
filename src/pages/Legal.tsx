@@ -9,7 +9,7 @@ const CONTENT = {
     sections: [
       {
         title: 'Agency Philosophy',
-        content: 'Velvet Rose operates as a high-end introductory agency. We represent independent companions and facilitate meetings with discerning clients.'
+        content: 'Precious Escorts operates as a high-end introductory agency. We represent independent companions and facilitate meetings with discerning clients.'
       },
       {
         title: 'Booking Policy',
@@ -27,7 +27,7 @@ const CONTENT = {
     sections: [
       {
         title: 'Legal Compliance',
-        content: 'Velvet Rose operates in strict accordance with local laws and regulations. Our services are for companionship and social engagement only.'
+        content: 'Precious Escorts operates in strict accordance with local laws and regulations. Our services are for companionship and social engagement only.'
       },
       {
         title: 'Adults Only',
@@ -35,7 +35,7 @@ const CONTENT = {
       },
       {
         title: 'Independent Status',
-        content: 'Companions are independent contractors. Velvet Rose does not exercise control over their private conduct outside of agreed agency standards.'
+        content: 'Companions are independent contractors. Precious Escorts does not exercise control over their private conduct outside of agreed agency standards.'
       }
     ]
   },
@@ -72,7 +72,7 @@ export function Legal() {
           className="text-center mb-32"
         >
           <h1 className="text-6xl md:text-[80px] font-display text-accent mb-8 leading-none italic">{info.title}</h1>
-          <p className="text-white/40 font-sans font-light uppercase tracking-[0.2em] text-[10px]">Velvet Rose Mandates | 2026 Edition</p>
+          <p className="text-white/40 font-sans font-light uppercase tracking-[0.2em] text-[10px]">Precious Escorts Mandates | 2026 Edition</p>
         </motion.div>
 
         <div className="space-y-24">

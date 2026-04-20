@@ -9,7 +9,7 @@ const FAQS = [
   },
   {
     question: "Is discretion guaranteed?",
-    answer: "Absolutely. Velvet Rose is built on a foundation of absolute privacy. We do not store sensitive client data and all meetings are handled with the utmost discretion."
+    answer: "Absolutely. Precious Escorts is built on a foundation of absolute privacy. We do not store sensitive client data and all meetings are handled with the utmost discretion."
   },
   {
     question: "Do you offer international travel?",

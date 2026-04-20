@@ -30,11 +30,13 @@ export function Navbar() {
   return (
     <nav 
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled ? "bg-[#0A0A0A]/90 backdrop-blur-md py-6 border-b border-white/10" : "bg-transparent py-10"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-700 border-b",
+        scrolled 
+          ? "bg-[#0A0A0A]/95 backdrop-blur-md py-6 border-white/10" 
+          : "bg-transparent py-10 border-transparent"
       )}
     >
-      <div className="max-w-full mx-auto px-15 flex justify-between items-baseline">
+      <div className="max-w-full mx-auto px-15 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3 group">
           <span className="text-2xl font-display tracking-[0.2em] uppercase text-accent">Velvet Rose</span>
         </Link>
