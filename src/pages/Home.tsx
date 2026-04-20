@@ -43,7 +43,7 @@ export function Home() {
             transition={{ duration: 1.2 }}
             className="text-5xl sm:text-7xl md:text-[120px] font-display text-accent mb-8 leading-[0.9] tracking-tighter"
           >
-            Unrivaled <br/>Sophistication.
+            Simple <br/>Pleasure.
           </motion.h1>
           
           <motion.p 
@@ -52,7 +52,7 @@ export function Home() {
             transition={{ delay: 0.8, duration: 1 }}
             className="text-lg md:text-xl text-white/50 font-sans font-light mb-12 max-w-xl leading-relaxed"
           >
-            Curating exceptional encounters for the discerning individual. Our collective represents the pinnacle of elegance, intelligence, and grace in Leeds.
+            Easy-going encounters for men who don't need the show. Real people, real simple, in Leeds.
           </motion.p>
           
           <motion.div 
@@ -92,9 +92,9 @@ export function Home() {
           </div>
           
           <div className="w-full md:w-100 sticky top-32">
-            <h2 className="text-4xl md:text-5xl font-display text-accent mb-8 leading-tight">Featured <br/><span className="italic text-white">Elite Companions</span></h2>
+            <h2 className="text-4xl md:text-5xl font-display text-accent mb-8 leading-tight">Featured <br/><span className="italic text-white">Companions</span></h2>
             <p className="text-white/40 text-base font-light leading-relaxed mb-10">
-              Hand-selected for their intelligence, elegance, and charm. Each companion at Velvet Rose offers a unique blend of beauty and sophistication.
+              Chosen for being good company first. Everything else comes naturally.
             </p>
             <Link to="/gallery" className="group flex items-center gap-4 text-accent text-xs uppercase tracking-[0.2em] font-sans">
               View All 
@@ -124,8 +124,8 @@ export function Home() {
             />
             <ExperienceCard 
               icon={<Diamond size={20} strokeWidth={1} />}
-              title="Elite Standards"
-              description="Our rigorous selection process ensures only the most refined and sophisticated companions represent our agency."
+              title="Simple Choices"
+              description="We take our time choosing so you don't waste yours. Just reliable, down-to-earth company."
             />
           </div>
         </div>
