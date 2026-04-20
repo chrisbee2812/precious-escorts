@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 import { Escort } from '@/src/constants';
 import { X, MapPin, Languages, Ruler, Heart, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
@@ -11,8 +12,15 @@ interface EscortModalProps {
 
 export function EscortModal({ escort, onClose }: EscortModalProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const navigate = useNavigate();
 
   if (!escort) return null;
+
+  const handleRequest = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    navigate('/contact', { state: { escortName: escort?.name } });
+    onClose();
+  };
 
   // Use exactly 5 images total (thumbnail + first 4 gallery images)
   const allImages = [escort.thumbnail, ...escort.gallery].slice(0, 5);
@@ -116,24 +124,23 @@ export function EscortModal({ escort, onClose }: EscortModalProps) {
 
               <div className="space-y-4 mb-12">
                 <div className="flex justify-between border-b border-white/10 py-3 text-xs uppercase tracking-widest text-white/70">
-                  <span>In-Call (2 Hours)</span>
-                  <span className="text-accent italic">£280</span>
+                  <span>In-Call (1 Hour)</span>
+                  <span className="text-accent italic">£150</span>
                 </div>
                 <div className="flex justify-between border-b border-white/10 py-3 text-xs uppercase tracking-widest text-white/70">
                   <span>Out-Call (2 Hours)</span>
                   <span className="text-accent italic">£320</span>
                 </div>
                 <div className="flex justify-between border-b border-white/10 py-3 text-xs uppercase tracking-widest text-white/70">
-                  <span>In-Call (Overnight)</span>
-                  <span className="text-accent italic">£800</span>
-                </div>
-                <div className="flex justify-between border-b border-white/10 py-3 text-xs uppercase tracking-widest text-white/70">
-                  <span>Out-Call (Overnight)</span>
+                  <span>Overnight (Out-Call)</span>
                   <span className="text-accent italic">£900</span>
                 </div>
               </div>
 
-              <button className="w-full py-5 border border-accent text-accent uppercase tracking-[0.2em] text-xs hover:bg-accent hover:text-black transition-all duration-500 font-sans">
+              <button 
+                onClick={(e) => handleRequest(e)}
+                className="w-full py-5 border border-accent text-accent uppercase tracking-[0.2em] text-xs hover:bg-accent hover:text-black transition-all duration-500 font-sans"
+              >
                 Request Encounter
               </button>
             </motion.div>

@@ -52,7 +52,7 @@ export function Home() {
             transition={{ delay: 0.8, duration: 1 }}
             className="text-lg md:text-xl text-white/50 font-sans font-light mb-12 max-w-xl leading-relaxed"
           >
-            Curating exceptional encounters for the discerning individual. Our collective represents the pinnacle of elegance, intelligence, and grace in the capital.
+            Curating exceptional encounters for the discerning individual. Our collective represents the pinnacle of elegance, intelligence, and grace in Leeds.
           </motion.p>
           
           <motion.div 

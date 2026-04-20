@@ -1,8 +1,19 @@
+import type { ReactNode } from 'react';
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send, Diamond, Heart } from 'lucide-react';
-import type { ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 export function Contact() {
+  const location = useLocation();
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    if (location.state?.escortName) {
+      setMessage(`I am interested in requesting an encounter with ${location.state.escortName}. Please let me know their availability.`);
+    }
+  }, [location.state]);
+
   return (
     <div className="pt-32 pb-32 min-h-screen bg-bg px-15">
       <div className="max-w-7xl mx-auto">
@@ -67,6 +78,8 @@ export function Contact() {
                 <label className="text-[10px] uppercase tracking-[0.2em] text-accent font-sans">Your Message</label>
                 <textarea 
                   rows={5}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   placeholder="Tell us about your requirements..."
                   className="w-full bg-black/40 border border-white/10 focus:border-accent p-6 text-white outline-none transition-colors rounded-none font-sans font-light resize-none text-sm"
                 />
@@ -88,13 +101,15 @@ export function Contact() {
   );
 }
 
-type ContactItemProps = {
-  icon: ReactNode
-  label: string
-  value: string
-}
-
-function ContactItem({ icon, label, value }: ContactItemProps) {
+function ContactItem({
+  icon,
+  label,
+  value,
+}: {
+  icon: ReactNode;
+  label: string;
+  value: string;
+}) {
   return (
     <div className="flex gap-8 items-start group border-l border-white/5 pl-8 py-2">
       <div className="text-accent group-hover:scale-110 transition-transform duration-500">
@@ -176,12 +191,7 @@ export function WorkWithUs() {
   );
 }
 
-type BenefitProps = {
-  title: string
-  desc: string
-}
-
-const Benefit = ({ title, desc }: BenefitProps) => (
+const Benefit = ({ title, desc }: { title: string; desc: string }) => (
   <div className="border-l border-white/5 pl-8 py-4">
     <h4 className="text-white font-display text-2xl mb-4 italic">{title}</h4>
     <p className="text-white/40 text-sm font-sans font-light">{desc}</p>

@@ -51,9 +51,9 @@ export function Rates() {
           <div className="w-full overflow-x-auto">
             <div className="min-w-150">
               <div className="grid grid-cols-3 border-b border-white/10 pb-6 mb-8">
-                <div className="text-[11px] uppercase tracking-[0.2em] text-white/30 font-display italic">Duration</div>
-                <div className="text-[11px] uppercase tracking-[0.2em] text-white/30 font-display italic text-center">In-Call</div>
-                <div className="text-[11px] uppercase tracking-[0.2em] text-white/30 font-display italic text-right">Out-Call</div>
+                <div className="text-[13px] uppercase tracking-[0.2em] text-white/30 font-display italic">Duration</div>
+                <div className="text-[13px] uppercase tracking-[0.2em] text-white/30 font-display italic text-center">In-Call</div>
+                <div className="text-[13px] uppercase tracking-[0.2em] text-white/30 font-display italic text-right">Out-Call</div>
               </div>
 
               <div className="space-y-6">

@@ -38,7 +38,7 @@ export function Navbar() {
     >
       <div className="max-w-full mx-auto px-15 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3 group">
-          <span className="text-2xl font-display tracking-[0.2em] uppercase text-accent">Velvet Rose</span>
+          <span className="text-2xl font-display tracking-[0.2em] uppercase text-accent">Precious Escorts</span>
         </Link>
 
         {/* Desktop Nav */}
