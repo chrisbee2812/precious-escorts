@@ -29,7 +29,7 @@ export function Home() {
       <section className="relative h-screen flex items-center px-8 md:px-30 bg-bg overflow-hidden pt-20">
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-40">
           <img 
-            src="https://picsum.photos/seed/luxury-bg/1920/1080?blur=5" 
+            src="./src/components/images/champagne.webp" 
             alt="Luxury background" 
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"

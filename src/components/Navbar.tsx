@@ -33,7 +33,7 @@ export function Navbar() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-700 border-b",
         scrolled 
           ? "bg-[#0A0A0A]/95 backdrop-blur-md py-6 border-white/10" 
-          : "bg-transparent py-10 border-transparent"
+          : "bg-transparent py-8 border-transparent"
       )}
     >
       <div className="max-w-full mx-auto px-15 flex justify-between items-center">
