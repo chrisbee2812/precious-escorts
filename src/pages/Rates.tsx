@@ -18,7 +18,7 @@ export function Rates() {
         <header className="text-center mb-32">
           <h1 className="text-5xl md:text-[100px] font-display text-accent mb-8 italic leading-none">Rates & Services</h1>
           <p className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed">
-            Our rates reflect the exceptional quality, education, and social grace of our companions. Transparent pricing for a seamless experience.
+            Our rates match the quality, brains, and charm of our companions. Clear prices, no hidden surprises.
           </p>
         </header>
 
@@ -46,7 +46,7 @@ export function Rates() {
           viewport={{ once: true }}
           className="bg-[#111] border border-accent/20 p-8 md:p-20 rounded-none shadow-2xl overflow-hidden relative"
         >
-          <h2 className="text-3xl font-display text-accent mb-16 text-center tracking-[0.2em] uppercase italic">Leeds Standard Rates</h2>
+          <h2 className="text-3xl font-display text-accent mb-16 text-center tracking-[0.2em] uppercase italic">Standard Rates</h2>
           
           <div className="w-full overflow-x-auto">
             <div className="min-w-150">

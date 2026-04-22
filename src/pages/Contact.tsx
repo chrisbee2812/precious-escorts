@@ -143,7 +143,7 @@ export function WorkWithUs() {
         <header className="text-center mb-32">
           <h1 className="text-6xl md:text-[100px] font-display text-accent mb-8 italic leading-none">Join the Collective</h1>
           <p className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed">
-            We are always seeking sophisticated, intelligent, and refined individuals to join our boutique agency. Experience a career defined by luxury, discretion, and exceptional rewards.
+            We are always looking for smart, confident, and well-presented girls to join our small, friendly agency. Enjoy a role with great earnings, privacy respected, and a genuinely high-end experience.
           </p>
         </header>
 
@@ -151,9 +151,15 @@ export function WorkWithUs() {
           <form className="space-y-12" onSubmit={(e) => e.preventDefault()}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <InputGroup label="Stage Name" placeholder="Your chosen name" />
+              <InputGroup label="Real Name" placeholder="Your real name" />
               <InputGroup label="Age" placeholder="Your age (18+ only)" type="number" />
               <InputGroup label="Location" placeholder="Current city" />
               <InputGroup label="Nationality" placeholder="Your nationality" />
+              <InputGroup label="Bust Size" placeholder="Your bust size" />
+              <InputGroup label="Dress Size" placeholder="Your dress size" />
+              <InputGroup label="Hair Colour" placeholder="Your hair colour" />
+              <InputGroup label="Eye Colour" placeholder="Your eye colour" />
+              <InputGroup label="Tattoos" placeholder="Your tattoos" />
               <InputGroup label="Email" placeholder="your@email.com" type="email" />
               <InputGroup label="WhatsApp/Phone" placeholder="+44 ..." />
             </div>

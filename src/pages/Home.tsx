@@ -52,7 +52,7 @@ export function Home() {
             transition={{ delay: 0.8, duration: 1 }}
             className="text-lg md:text-xl text-white/50 font-sans font-light mb-12 max-w-xl leading-relaxed"
           >
-            Easy-going encounters for men who don't need the show. Real people, real simple, in Leeds.
+            Easy, genuine encounters in Leeds. Real people, no games, no pretence. Just straightforward and relaxed.
           </motion.p>
           
           <motion.div 
