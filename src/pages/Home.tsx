@@ -94,7 +94,7 @@ export function Home() {
 
       {/* Featured Section */}
       <section className="py-32 px-15 bg-bg relative border-t border-white/5">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-20 items-start">
+        <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row gap-20 items-start">
           <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-8">
             {ESCORTS.filter(e => e.featured).map((escort) => (
               <div 
