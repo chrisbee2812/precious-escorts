@@ -38,7 +38,7 @@ export function About() {
           transition={{ delay: 1.5, duration: 1.2 }}
           className="text-white/40 font-sans font-light max-w-3xl mx-auto text-lg leading-relaxed mb-16"
         >
-          We don't do stiff and stuffy. We do real, private, and seriously seductive. For nearly 15 years, we've been giving Leeds and the North West something rare: genuine connection wrapped in total discretion. No games. No judgment. Just unforgettable nights with companions who actually enjoy your company. Read on — and see exactly what sets us apart.
+          We don't do cold or awkward. We do real, private, and seriously seductive. For nearly 15 years, we've been giving Leeds and the North West something rare: genuine connection wrapped in total discretion. No games. No judgment. Just unforgettable nights with companions who actually enjoy your company. Read on — and see exactly what sets us apart.
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-32">
