@@ -136,12 +136,12 @@ export function Home() {
             <ExperienceCard 
               icon={<ShieldCheck size={20} strokeWidth={1} />}
               title="Discretion Assured"
-              description="Privacy is our highest priority. We maintain absolute confidentiality for both our clients and companions."
+              description="Your name, your business, your secrets — they're yours alone. We don't kiss and tell. Ever. From first message to goodbye, everything stays between us."
             />
             <ExperienceCard 
               icon={<Star size={20} strokeWidth={1} />}
               title="Bespoke Services"
-              description="From social engagements to luxury travel, we tailor every meeting to your specific desires and expectations."
+              description="Every meeting is shaped around what you're craving — whether it's wild and spontaneous or slow and sensual. Tell us your mood. We'll make it happen."
             />
             <ExperienceCard 
               icon={<Diamond size={20} strokeWidth={1} />}
