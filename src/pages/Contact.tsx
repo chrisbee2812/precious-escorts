@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send, Diamond, Heart } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import { useState, useEffect } from 'react';
 
 export function Contact() {

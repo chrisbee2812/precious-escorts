@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { motion } from 'motion/react';
 import { Shield, Scale, ScrollText, CheckCircle2 } from 'lucide-react';
 

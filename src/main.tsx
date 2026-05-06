@@ -1,10 +1,27 @@
 import {StrictMode} from 'react';
-import {createRoot} from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-);
+const rootElement = document.getElementById('root');
+
+if (!rootElement) {
+  throw new Error('Failed to find the root element');
+}
+
+if (rootElement.hasChildNodes()) {
+  // Prerendered content exists → hydrate
+  hydrateRoot(
+    rootElement,
+    <StrictMode>
+      <App />
+    </StrictMode>
+  );
+} else {
+  // No prerendered content → normal render (e.g., dev mode)
+  createRoot(rootElement).render(
+    <StrictMode>
+      <App />
+    </StrictMode>
+  );
+}

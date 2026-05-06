@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { Diamond, Mail, Phone, Instagram, MapPin } from 'lucide-react';
 
 export function Footer() {
@@ -15,6 +15,7 @@ export function Footer() {
             <Link to="/etiquette" className="hover:text-accent transition-colors">Etiquette</Link>
             <Link to="/terms-and-conditions" className="hover:text-accent transition-colors">Terms & Conditions</Link>
             <Link to="/disclaimer" className="hover:text-accent transition-colors">Disclaimer</Link>
+            <Link to="/faq" className="hover:text-accent transition-colors">FAQ</Link>
           </div>
         </div>
 

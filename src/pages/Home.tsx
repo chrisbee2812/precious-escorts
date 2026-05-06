@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { Diamond, Star, ArrowRight, ShieldCheck, Clock, Users } from 'lucide-react';
 import { ESCORTS } from '@/src/constants';
 import { EscortCard } from '@/src/components/EscortCard';
