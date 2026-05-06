@@ -68,7 +68,7 @@ export function Home() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
                 className="text-lg md:text-xl text-white/50 font-sans font-light max-w-xl leading-relaxed"
               >
                 {HERO_TEXTS[currentTextIndex]}

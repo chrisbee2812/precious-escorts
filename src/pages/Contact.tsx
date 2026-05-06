@@ -165,7 +165,7 @@ export function WorkWithUs() {
             transition={{ delay: 0.3 }}
             className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed"
           >
-            We are always looking for smart, confident, and well-presented girls to join our small, friendly agency. Enjoy a role with great earnings, privacy respected, and a genuinely high-end experience.
+            We are always looking for smart, confident, and well-presented girls to join our small, friendly agency. Enjoy a role with great earnings, privacy respected, and a genuinely wonderful experience.
           </motion.p>
         </header>
 
