@@ -1,3 +1,6 @@
+import { Atom, Clock, Lock, HandHeart, Phone, Shield, RulerDimensionLine, Heart, SmilePlus } from "lucide-react";
+import { JSX, createElement } from "react";
+
 export interface Escort {
   id: string;
   name: string;
@@ -14,6 +17,13 @@ export interface Escort {
     eyes: string;
     hair: string;
   };
+}
+
+export interface Service {
+  id: string;
+  icon: JSX.Element;
+  title: string;
+  description: string;
 }
 
 export const ESCORTS: Escort[] = [
@@ -246,5 +256,62 @@ export const ESCORTS: Escort[] = [
       eyes: "Amber",
       hair: "Ebony"
     }
+  }
+];
+
+export const SERVICES: Service[] = [
+  {
+    id: "punctuality",
+    icon: createElement(Clock, { size: 20 }),
+    title: "Punctuality",
+    description: "Your time is precious. We never keep you waiting — because anticipation should be pleasure, not frustration. When we say a time, we mean it."
+  },
+  {
+    id: "confidentiality",
+    icon: createElement(Lock, { size: 20 }),
+    title: "Confidentiality",
+    description: "Your name, your business, your secrets — they're yours alone. We don't kiss and tell. Ever. From first message to goodbye, everything stays between us."
+  },
+  {
+    id: "genuine-chemistry",
+    icon: createElement(Atom, { size: 20 }),
+    title: "Genuine Chemistry",
+    description: "Fake smiles and scripted lines aren't our style. We only connect when the attraction is real. That's what makes every encounter feel natural, exciting, and unforgettable."
+  },
+  {
+    id: "handpicked-companions",
+    icon: createElement(HandHeart, { size: 20 }),
+    title: "Handpicked Companions",
+    description: "We don't just hire for looks. Every lady is chosen for her charm, her energy, and that little spark that makes you feel like the only man in the room."
+  },
+  {
+    id: "simple-sleek-booking",
+    icon: createElement(Phone, { size: 20 }),
+    title: "Simple, Sleek Booking",
+    description: "No endless forms. No awkward questions. Just a quick, discreet conversation and a clear arrangement. You focus on the anticipation — we handle the rest."
+  },
+  {
+    id: "safety-respect",
+    icon: createElement(Shield, { size: 20 }),
+    title: "Safety & Respect",
+    description: "Your comfort isn't just important — it's everything. Boundaries are never pushed. Respect is given both ways. That's the real secret to a night you actually enjoy."
+  },
+  {
+    id: "tailored-encounters",
+    icon: createElement(RulerDimensionLine, { size: 20 }),
+    title: "Tailored Encounters",
+    description: "You're not a number. Every meeting is shaped around what you're craving — whether it's wild and spontaneous or slow and sensual. Tell us your mood. We'll make it happen."
+  },
+  {
+    id: "trusted-network",
+    icon: createElement(Heart, { size: 20 }),
+    title: "Unforgettable Chemistry",
+    description: "Some bookings you forget. Ours? You'll think about the next morning. That's not by accident. It's by design. We only connect when the chemistry is undeniable. That's what makes every encounter feel electric and unforgettable."
+  },
+  {
+    id: "discreet-service",
+    icon: createElement(SmilePlus, { size: 20 }),
+    title: "Genuine Availability",
+    description: "We don't overbook or juggle. When we say a lady is free, she's truly free to focus on you. No rushing. No clock-watching. Just real, present time together."
   }
 ];

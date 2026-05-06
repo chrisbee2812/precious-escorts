@@ -1,14 +1,29 @@
-import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Diamond, Star, ArrowRight, ShieldCheck, Clock, Users } from 'lucide-react';
 import { ESCORTS } from '@/src/constants';
 import { EscortCard } from '@/src/components/EscortCard';
 import { EscortModal } from '@/src/components/EscortModal';
 
+const HERO_TEXTS = [
+  "Want the hottest escort company in Leeds? That's Precious Escorts. For almost 15 years, we've been giving those in the know exactly what they crave — unforgettable company.",
+  "Bespoke companionship tailored to your expectations. Discover a world of refined beauty and intellectual charm across Leeds.",
+  "The ultimate destination for social engagement. We provide discreet, professional, and unforgettable experiences for our clientele.",
+  "Elegance redefined for the modern man. Experience the finest companionship curated with absolute discretion."
+];
+
 export function Home() {
   const [selectedEscort, setSelectedEscort] = useState<any>(null);
   const [lastSelectedId, setLastSelectedId] = useState<string | null>(null);
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTextIndex((prev) => (prev + 1) % HERO_TEXTS.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   const handleClose = () => {
     if (selectedEscort) {
@@ -29,7 +44,7 @@ export function Home() {
       <section className="relative h-screen flex items-center px-8 md:px-30 bg-bg overflow-hidden pt-20">
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-40">
           <img 
-            src="/champagne.jpg"
+            src="/woman-bed.webp"
             alt="Luxury background" 
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
@@ -46,26 +61,32 @@ export function Home() {
             Simple <br/>Pleasure.
           </motion.h1>
           
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 1 }}
-            className="text-lg md:text-xl text-white/50 font-sans font-light mb-12 max-w-xl leading-relaxed"
-          >
-            Easy, genuine encounters in Leeds. Real people, no games, no pretence. Just straightforward and relaxed.
-          </motion.p>
+          <div className="h-25 mb-12">
+            <AnimatePresence mode="wait">
+              <motion.p 
+                key={currentTextIndex}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="text-lg md:text-xl text-white/50 font-sans font-light max-w-xl leading-relaxed"
+              >
+                {HERO_TEXTS[currentTextIndex]}
+              </motion.p>
+            </AnimatePresence>
+          </div>
           
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
+            transition={{ delay: 1.5 }}
             className="flex flex-col sm:row gap-6"
           >
             <Link 
               to="/gallery" 
               className="px-12 py-5 border border-accent text-accent uppercase tracking-[0.2em] text-xs hover:bg-accent hover:text-black transition-all duration-500 font-sans text-center"
             >
-              View Collective
+              Meet the girls
             </Link>
           </motion.div>
         </div>
@@ -107,11 +128,11 @@ export function Home() {
       {/* Experience Section */}
       <section className="py-32 bg-bg px-15 border-t border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="text-left mb-20">
-            <h2 className="text-5xl font-display text-accent mb-6 leading-tight italic">The Boutique <br/><span className="text-white not-italic">Experience</span></h2>
+          <div className="text-left mb-8">
+            <h2 className="text-5xl font-display text-accent mb-4 leading-tight italic">Sinfully <br/><span className="text-white not-italic">Private</span></h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-4">
             <ExperienceCard 
               icon={<ShieldCheck size={20} strokeWidth={1} />}
               title="Discretion Assured"
@@ -128,6 +149,10 @@ export function Home() {
               description="We take our time choosing so you don't waste yours. Just reliable, down-to-earth company."
             />
           </div>
+          <Link to="/about" className="group flex items-center gap-4 text-accent text-xs uppercase tracking-[0.2em] font-sans">
+            Read More
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+          </Link>
         </div>
       </section>
     </div>

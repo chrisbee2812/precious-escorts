@@ -16,10 +16,21 @@ export function Rates() {
     <div className="pt-32 pb-32 min-h-screen bg-bg px-8 md:px-15">
       <div className="max-w-5xl mx-auto">
         <header className="text-center mb-32">
-          <h1 className="text-5xl md:text-[100px] font-display text-accent mb-8 italic leading-none">Rates & Services</h1>
-          <p className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed">
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-6xl md:text-[100px] font-display text-accent mb-8 leading-none italic"
+          >
+            Rates & Services
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed"
+          >
             Our rates match the quality, brains, and charm of our companions. Clear prices, no hidden surprises.
-          </p>
+          </motion.p>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-32">

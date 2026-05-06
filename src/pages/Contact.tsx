@@ -18,10 +18,21 @@ export function Contact() {
     <div className="pt-32 pb-32 min-h-screen bg-bg px-15">
       <div className="max-w-7xl mx-auto">
         <header className="text-center mb-32">
-          <h1 className="text-6xl md:text-[100px] font-display text-accent mb-8 italic leading-none">Contact Concierge</h1>
-          <p className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed">
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-6xl md:text-[100px] font-display text-accent mb-8 leading-none italic"
+          >
+            Contact Us
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed"
+          >
             For enquiries, bookings, or special requests, please get in touch with our dedicated concierge team. We prioritize discretion and timely responses.
-          </p>
+          </motion.p>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
@@ -141,10 +152,21 @@ export function WorkWithUs() {
     <div className="pt-32 pb-32 min-h-screen bg-bg px-15">
       <div className="max-w-4xl mx-auto">
         <header className="text-center mb-32">
-          <h1 className="text-6xl md:text-[100px] font-display text-accent mb-8 italic leading-none">Join the Collective</h1>
-          <p className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed">
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-6xl md:text-[100px] font-display text-accent mb-8 leading-none italic"
+          >
+            Join the Collective
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed"
+          >
             We are always looking for smart, confident, and well-presented girls to join our small, friendly agency. Enjoy a role with great earnings, privacy respected, and a genuinely high-end experience.
-          </p>
+          </motion.p>
         </header>
 
         <section className="bg-[#111] border border-white/5 p-10 md:p-20 rounded-none shadow-[0_50px_100px_rgba(0,0,0,0.5)] mb-32">

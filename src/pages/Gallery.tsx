@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { ESCORTS, Escort } from '@/src/constants';
 import { EscortCard } from '@/src/components/EscortCard';
 import { EscortModal } from '@/src/components/EscortModal';
-import { Diamond } from 'lucide-react';
 
 export function Gallery() {
   const [selectedEscort, setSelectedEscort] = useState<Escort | null>(null);

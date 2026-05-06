@@ -7,6 +7,7 @@ import { Gallery } from './pages/Gallery';
 import { Rates } from './pages/Rates';
 import { Contact, WorkWithUs } from './pages/Contact';
 import { Legal } from './pages/Legal';
+import { About } from './pages/About';
 
 import { FAQ } from './pages/FAQ';
 
@@ -28,6 +29,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/about" element={<About />} />
             <Route path="/rates" element={<Rates />} />
             <Route path="/work-with-us" element={<WorkWithUs />} />
             <Route path="/contact" element={<Contact />} />
