@@ -92,7 +92,7 @@ export default defineConfig(({mode}) => {
       tailwindcss(),
       prerenderStatic({
         routes: routes,
-        template: 'index.html',
+        template: 'template.html',
         render: (route: { path: string }) => { // ✅ The plugin needs a render function
           // This will be replaced by your server entry logic
           return `<div id="root">${route.path}</div>`;
