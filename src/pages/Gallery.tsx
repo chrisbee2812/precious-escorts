@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { ESCORTS, Escort } from '@/src/constants';
 import { EscortCard } from '@/src/components/EscortCard';
 import { EscortModal } from '@/src/components/EscortModal';
+import { Diamond } from 'lucide-react';
 
 export function Gallery() {
   const [selectedEscort, setSelectedEscort] = useState<Escort | null>(null);
@@ -40,7 +41,7 @@ export function Gallery() {
             transition={{ delay: 0.3 }}
             className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed"
           >
-            A handpicked lineup of great companions in Leeds and beyond. Each profile shows a girl who is attractive, smart, and serious about providing a great experience.
+            A curated selection of the most sophisticated companions in Leeds and beyond. Each profile represent a commitment to elegance, intelligence, and exceptional service.
           </motion.p>
         </header>
 

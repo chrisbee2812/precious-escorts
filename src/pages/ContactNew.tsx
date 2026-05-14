@@ -279,21 +279,10 @@ export function Contact() {
     <div className="pt-32 pb-32 min-h-screen bg-bg px-15">
       <div className="max-w-7xl mx-auto">
         <header className="text-center mb-32">
-          <motion.h1 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-6xl md:text-[100px] font-display text-accent mb-8 leading-none italic"
-          >
-            Contact Concierge
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed"
-          >
+          <h1 className="text-6xl md:text-[100px] font-display text-accent mb-8 italic leading-none">Contact Concierge</h1>
+          <p className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed">
             For enquiries, bookings, or special requests, please get in touch with our dedicated concierge team. We prioritize discretion and timely responses.
-          </motion.p>
+          </p>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
@@ -363,8 +352,8 @@ export function Contact() {
             ) : (
               <form className="space-y-10" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <InputGroup label="Full Name" placeholder="Your name" required autoComplete="name" />
-                  <InputGroup label="Email Address" placeholder="your@email.com" type="email" required autoComplete="email" />
+                  <InputGroup label="Full Name" placeholder="Your name" required />
+                  <InputGroup label="Email Address" placeholder="your@email.com" type="email" required />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <CustomDateInput 
@@ -425,7 +414,7 @@ function ContactItem({ icon, label, value }: { icon: React.ReactNode, label: str
   );
 }
 
-export function InputGroup({ label, placeholder = "", type = "text", required = false, id, name, autoComplete }: { label: string, placeholder?: string, type?: string, required?: boolean, id?: string, name?: string, autoComplete?: string }) {
+export function InputGroup({ label, placeholder = "", type = "text", required = false, id, name }: { label: string, placeholder?: string, type?: string, required?: boolean, id?: string, name?: string }) {
   const fieldId = id || label.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
   return (
     <div className="space-y-4">
@@ -438,7 +427,6 @@ export function InputGroup({ label, placeholder = "", type = "text", required = 
         type={type}
         placeholder={placeholder}
         required={required}
-        autoComplete={autoComplete}
         className="w-full bg-black/40 border border-white/10 focus:border-accent p-6 text-white outline-none transition-colors rounded-none font-sans font-light text-sm"
       />
     </div>
@@ -493,7 +481,7 @@ export function FileGroup({ label, desc, required = false, id }: { label: string
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-between items-start min-h-20">
+      <div className="flex justify-between items-end min-h-10">
         <div>
           <label htmlFor={fieldId} className="text-[10px] uppercase tracking-[0.2em] text-accent font-sans block mb-1">{label}</label>
           <span className="text-[10px] text-white/20 font-sans tracking-wider uppercase leading-tight">{desc}</span>
@@ -566,21 +554,10 @@ export function WorkWithUs() {
     <div className="pt-32 pb-32 min-h-screen bg-bg px-15">
       <div className="max-w-4xl mx-auto">
         <header className="text-center mb-32">
-          <motion.h1 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-6xl md:text-[100px] font-display text-accent mb-8 leading-none italic"
-          >
-            Work With Us
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed"
-          >
-              At Precious Escorts, we are always on the lookout for exceptional talent to join our exclusive team. If you possess the poise, charisma, and professionalism that align with our brand, we invite you to submit your dossier for consideration.
-          </motion.p>
+          <h1 className="text-6xl md:text-[100px] font-display text-accent mb-8 italic leading-none">Join the Collective</h1>
+          <p className="text-white/40 font-sans font-light max-w-2xl mx-auto text-lg leading-relaxed">
+            We are always seeking sophisticated, intelligent, and refined individuals to join our boutique agency. Experience a career defined by luxury, discretion, and exceptional rewards.
+          </p>
         </header>
 
         <section className="bg-[#111] border border-white/5 p-10 md:p-20 rounded-none shadow-[0_50px_100px_rgba(0,0,0,0.5)] mb-32">
@@ -606,14 +583,14 @@ export function WorkWithUs() {
             </motion.div>
           ) : (
             <form className="space-y-12" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <InputGroup label="Stage Name" placeholder="Your chosen name" required />
-                <InputGroup label="Real Name" placeholder="Legal name (confidential)" required autoComplete="name" />
+                <InputGroup label="Real Name" placeholder="Legal name (confidential)" required />
                 <InputGroup label="Age" placeholder="Your age (18+ only)" type="number" required />
                 <InputGroup label="Nationality" placeholder="Your nationality" required />
                 <InputGroup label="Location" placeholder="Current city" required />
-                <InputGroup label="Email" placeholder="your@email.com" type="email" required autoComplete="email" />
-                <InputGroup label="WhatsApp/Phone" placeholder="+44 ..." required autoComplete="tel" />
+                <InputGroup label="Email" placeholder="your@email.com" type="email" required />
+                <InputGroup label="WhatsApp/Phone" placeholder="+44 ..." required />
                 <InputGroup label="Bust Size" placeholder="e.g. 32B" required />
                 <InputGroup label="Dress Size" placeholder="e.g. 8" required />
                 <InputGroup label="Hair Colour" placeholder="e.g. Brunette" required />
@@ -629,7 +606,7 @@ export function WorkWithUs() {
                 />
                 <FileGroup 
                   label="Full Body Shot" 
-                  desc="Recent full photo of yourself, non nude, ideally showing your figure" 
+                  desc="Recent clothed image showing your silhouette" 
                   required 
                 />
               </div>

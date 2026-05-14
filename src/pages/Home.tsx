@@ -7,10 +7,10 @@ import { EscortCard } from '@/src/components/EscortCard';
 import { EscortModal } from '@/src/components/EscortModal';
 
 const HERO_TEXTS = [
-  "Want the hottest escort company in Leeds? That's Precious Escorts. For almost 15 years, we've been giving those in the know exactly what they crave — unforgettable company.",
   "Bespoke companionship tailored to your expectations. Discover a world of refined beauty and intellectual charm across Leeds.",
   "The ultimate destination for social engagement. We provide discreet, professional, and unforgettable experiences for our clientele.",
-  "Elegance redefined for the modern man. Experience the finest companionship curated with absolute discretion."
+  "Elegance redefined for the modern man. Experience the finest companionship curated with absolute discretion.",
+  "Want the hottest escort company in Leeds? That's Precious Escorts. For almost 15 years, we've been giving those in the know exactly what they crave — unforgettable company."
 ];
 
 export function Home() {
@@ -44,8 +44,8 @@ export function Home() {
       <section className="relative h-screen flex items-center px-8 md:px-30 bg-bg overflow-hidden pt-20">
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-40">
           <img 
-            src="/woman-bed.webp"
-            alt="Luxury background" 
+            src="./woman-bed.webp" 
+            alt="A woman in black underwear kneeling on a bed with back to viewer" 
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
@@ -58,7 +58,7 @@ export function Home() {
             transition={{ duration: 1.2 }}
             className="text-5xl sm:text-7xl md:text-[120px] font-display text-accent mb-8 leading-[0.9] tracking-tighter"
           >
-            Simple <br/>Pleasure.
+            Unrivaled <br/>Sophistication.
           </motion.h1>
           
           <div className="h-25 mb-12">
@@ -68,7 +68,7 @@ export function Home() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
                 className="text-lg md:text-xl text-white/50 font-sans font-light max-w-xl leading-relaxed"
               >
                 {HERO_TEXTS[currentTextIndex]}
@@ -79,21 +79,21 @@ export function Home() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5 }}
+            transition={{ delay: 0.5 }}
             className="flex flex-col sm:row gap-6"
           >
             <Link 
               to="/gallery" 
               className="px-12 py-5 border border-accent text-accent uppercase tracking-[0.2em] text-xs hover:bg-accent hover:text-black transition-all duration-500 font-sans text-center"
             >
-              Meet the girls
+              View Collective
             </Link>
           </motion.div>
         </div>
       </section>
 
       {/* Featured Section */}
-      <section className="py-32 px-15 bg-bg relative border-t border-white/5">
+      <section className="py-16 px-15 bg-bg relative border-t border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row gap-20 items-start">
           <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-8">
             {ESCORTS.filter(e => e.featured).map((escort) => (
@@ -126,13 +126,13 @@ export function Home() {
       </section>
 
       {/* Experience Section */}
-      <section className="py-32 bg-bg px-15 border-t border-white/5">
+      <section className="py-16 bg-bg px-15 border-t border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="text-left mb-8">
-            <h2 className="text-5xl font-display text-accent mb-4 leading-tight italic">Sinfully <br/><span className="text-white not-italic">Private</span></h2>
+          <div className="text-left mb-20">
+            <h2 className="text-5xl font-display text-accent mb-6 leading-tight italic">The Boutique <br/><span className="text-white not-italic">Experience</span></h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             <ExperienceCard 
               icon={<ShieldCheck size={20} strokeWidth={1} />}
               title="Discretion Assured"
@@ -146,13 +146,9 @@ export function Home() {
             <ExperienceCard 
               icon={<Diamond size={20} strokeWidth={1} />}
               title="Simple Choices"
-              description="We take our time choosing so you don't waste yours. Just reliable, down-to-earth company."
+              description="We take our time choosing so you don't waste yours. Just reliable, down-to-earth company. No awkward small talk. No pressure. Just real people who know how to have a good time."
             />
           </div>
-          <Link to="/about" className="group flex items-center gap-4 text-accent text-xs uppercase tracking-[0.2em] font-sans">
-            Read More
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-          </Link>
         </div>
       </section>
     </div>
