@@ -39,13 +39,13 @@ export const ESCORTS: Escort[] = [
     age: 24,
     location: "Leeds",
     bio: "Elara is the embodiment of sophistication and grace. With a background in classical arts and a keen mind for deep conversation, she is the perfect companion for high-profile events or intimate evenings. Her presence is both calming and captivating, ensuring every moment spent in her company is nothing short of extraordinary.",
-    thumbnail: "https://picsum.photos/seed/elara-main/600/900?grayscale",
+    thumbnail: "./silhouette0.webp",
     gallery: [
-      "https://picsum.photos/seed/elara-1/800/1200?grayscale",
-      "https://picsum.photos/seed/elara-2/800/1200?grayscale",
-      "https://picsum.photos/seed/elara-3/800/1200?grayscale",
-      "https://picsum.photos/seed/elara-4/800/1200?grayscale",
-      "https://picsum.photos/seed/elara-5/800/1200?grayscale"
+      "./silhouette2.webp",
+      "./silhouette3.webp",
+      "./silhouette4.webp",
+      "./silhouette5.webp",
+      "./silhouette6.webp"
     ],
     languages: ["English", "French"],
     featured: false,
@@ -67,13 +67,13 @@ export const ESCORTS: Escort[] = [
     age: 26,
     location: "Leeds Central",
     bio: "A true connoisseur of luxury and elegance. Seraphina brings an air of mystery and allure to every encounter. Whether you're dining at the finest establishments or enjoying a quiet night in, her charisma and intelligence will make the experience unforgettable.",
-    thumbnail: "https://picsum.photos/seed/seraphina-main/600/900?grayscale",
+    thumbnail: "./silhouette2.webp",
     gallery: [
-      "https://picsum.photos/seed/seraphina-1/800/1200?grayscale",
-      "https://picsum.photos/seed/seraphina-2/800/1200?grayscale",
-      "https://picsum.photos/seed/seraphina-3/800/1200?grayscale",
-      "https://picsum.photos/seed/seraphina-4/800/1200?grayscale",
-      "https://picsum.photos/seed/seraphina-5/800/1200?grayscale"
+      "./silhouette3.webp",
+      "./silhouette4.webp",
+      "./silhouette5.webp",
+      "./silhouette6.webp",
+      "./silhouette7.webp"
     ],
     languages: ["English", "Italian", "Spanish"],
     featured: false,
@@ -94,13 +94,13 @@ export const ESCORTS: Escort[] = [
     age: 23,
     location: "Headingley",
     bio: "Full of life and youthful energy, Aria is as spirited as she is beautiful. Her infectious laughter and adventurous soul make her the ideal companion for those seeking a vibrant and engaging experience.",
-    thumbnail: "https://picsum.photos/seed/aria-main/600/900?grayscale",
+    thumbnail: "./silhouette3.webp",
     gallery: [
-      "https://picsum.photos/seed/aria-1/800/1200?grayscale",
-      "https://picsum.photos/seed/aria-2/800/1200?grayscale",
-      "https://picsum.photos/seed/aria-3/800/1200?grayscale",
-      "https://picsum.photos/seed/aria-4/800/1200?grayscale",
-      "https://picsum.photos/seed/aria-5/800/1200?grayscale"
+      "./silhouette4.webp",
+      "./silhouette5.webp",
+      "./silhouette6.webp",
+      "./silhouette7.webp",
+      "./silhouette8.webp"
     ],
     languages: ["English"],
     featured: false,
@@ -121,13 +121,13 @@ export const ESCORTS: Escort[] = [
     age: 28,
     location: "Roundhay",
     bio: "Mature, elegant, and deeply cultured. Isabella is a world traveler with stories that fascinate and a presence that commands respect. She is the ultimate partner for a refined gentleman.",
-    thumbnail: "https://picsum.photos/seed/isabella-main/600/900?grayscale",
+    thumbnail: "./silhouette4.webp",
     gallery: [
-      "https://picsum.photos/seed/isabella-1/800/1200?grayscale",
-      "https://picsum.photos/seed/isabella-2/800/1200?grayscale",
-      "https://picsum.photos/seed/isabella-3/800/1200?grayscale",
-      "https://picsum.photos/seed/isabella-4/800/1200?grayscale",
-      "https://picsum.photos/seed/isabella-5/800/1200?grayscale"
+      "./silhouette5.webp",
+      "./silhouette6.webp",
+      "./silhouette7.webp",
+      "./silhouette8.webp",
+      "./silhouette9.webp"
     ],
     languages: ["English", "Russian"],
     featured: false,
@@ -148,13 +148,13 @@ export const ESCORTS: Escort[] = [
     age: 25,
     location: "Horsforth",
     bio: "Exotic, mysterious, and incredibly attentive. Maya specializes in creating deep, personal connections. Her background in psychology allows her to read the room perfectly, making her the ideal companion for everything from high-pressure business dinners to relaxed private retreats.",
-    thumbnail: "https://picsum.photos/seed/maya-main/600/900?grayscale",
+    thumbnail: "./silhouette5.webp",
     gallery: [
-      "https://picsum.photos/seed/maya-1/800/1200?grayscale",
-      "https://picsum.photos/seed/maya-2/800/1200?grayscale",
-      "https://picsum.photos/seed/maya-3/800/1200?grayscale",
-      "https://picsum.photos/seed/maya-4/800/1200?grayscale",
-      "https://picsum.photos/seed/maya-5/800/1200?grayscale"
+      "./silhouette6.webp",
+      "./silhouette7.webp",
+      "./silhouette8.webp",
+      "./silhouette9.webp",
+      "./silhouette0.webp"
     ],
     languages: ["English", "Arabic", "French"],
     featured: true,
@@ -175,13 +175,13 @@ export const ESCORTS: Escort[] = [
     age: 22,
     location: "Leeds",
     bio: "Sofia is a breath of fresh air. Her curious nature and love for intellectual discourse make her a unique and stimulating companion. She enjoys exploring the city's hidden gems and sharing meaningful conversations.",
-    thumbnail: "https://picsum.photos/seed/sofia-main/600/900?grayscale",
+    thumbnail: "./silhouette6.webp",
     gallery: [
-      "https://picsum.photos/seed/sofia-1/800/1200?grayscale",
-      "https://picsum.photos/seed/sofia-2/800/1200?grayscale",
-      "https://picsum.photos/seed/sofia-3/800/1200?grayscale",
-      "https://picsum.photos/seed/sofia-4/800/1200?grayscale",
-      "https://picsum.photos/seed/sofia-5/800/1200?grayscale"
+      "./silhouette7.webp",
+      "./silhouette8.webp",
+      "./silhouette9.webp",
+      "./silhouette0.webp",
+      "./silhouette2.webp"
     ],
     languages: ["English", "Italian"],
     featured: false,
@@ -202,13 +202,13 @@ export const ESCORTS: Escort[] = [
     age: 27,
     location: "Leeds",
     bio: "Elegant and worldly, Lina possesses an innate talent for making everyone she meets feel at ease. Her extensive travels have gifted her with a wealth of fascinating stories and a broad perspective on life.",
-    thumbnail: "https://picsum.photos/seed/lina-main/600/900?grayscale",
+    thumbnail: "./silhouette7.webp",
     gallery: [
-      "https://picsum.photos/seed/lina-1/800/1200?grayscale",
-      "https://picsum.photos/seed/lina-2/800/1200?grayscale",
-      "https://picsum.photos/seed/lina-3/800/1200?grayscale",
-      "https://picsum.photos/seed/lina-4/800/1200?grayscale",
-      "https://picsum.photos/seed/lina-5/800/1200?grayscale"
+      "./silhouette8.webp",
+      "./silhouette9.webp",
+      "./silhouette0.webp",
+      "./silhouette2.webp",
+      "./silhouette3.webp"
     ],
     languages: ["English", "French", "German"],
     featured: false,
@@ -229,13 +229,13 @@ export const ESCORTS: Escort[] = [
     age: 24,
     location: "Leeds",
     bio: "Clara's charm lies in her quiet intelligence and observant nature. She is the perfect companion for those who appreciate subtlety and a deeper connection. Her poise and grace are evident in everything she does.",
-    thumbnail: "https://picsum.photos/seed/clara-main/600/900?grayscale",
+    thumbnail: "./silhouette8.webp",
     gallery: [
-      "https://picsum.photos/seed/clara-1/800/1200?grayscale",
-      "https://picsum.photos/seed/clara-2/800/1200?grayscale",
-      "https://picsum.photos/seed/clara-3/800/1200?grayscale",
-      "https://picsum.photos/seed/clara-4/800/1200?grayscale",
-      "https://picsum.photos/seed/clara-5/800/1200?grayscale"
+      "./silhouette9.webp",
+      "./silhouette0.webp",
+      "./silhouette2.webp",
+      "./silhouette3.webp",
+      "./silhouette4.webp"
     ],
     languages: ["English"],
     featured: false,
@@ -256,13 +256,13 @@ export const ESCORTS: Escort[] = [
     age: 26,
     location: "Leeds",
     bio: "Olivia is a dynamic and multifaceted individual with a passion for art and culture. Her engaging personality and sharp wit make her a delight to be around, whether she's attending a gallery opening or enjoying a quiet dinner.",
-    thumbnail: "https://picsum.photos/seed/olivia-main/600/900?grayscale",
+    thumbnail: "./silhouette9.webp",
     gallery: [
-      "https://picsum.photos/seed/olivia-1/800/1200?grayscale",
-      "https://picsum.photos/seed/olivia-2/800/1200?grayscale",
-      "https://picsum.photos/seed/olivia-3/800/1200?grayscale",
-      "https://picsum.photos/seed/olivia-4/800/1200?grayscale",
-      "https://picsum.photos/seed/olivia-5/800/1200?grayscale"
+      "./silhouette0.webp",
+      "./silhouette2.webp",
+      "./silhouette3.webp",
+      "./silhouette4.webp",
+      "./silhouette5.webp"
     ],
     languages: ["English", "Spanish"],
     featured: true,
@@ -283,13 +283,13 @@ export const ESCORTS: Escort[] = [
     age: 25,
     location: "Leeds",
     bio: "Vienna is the epitome of modern elegance. Her effortless style and sophisticated outlook on life make her a fascinating companion. She has a talent for finding the beauty in the everyday and sharing it with others.",
-    thumbnail: "https://picsum.photos/seed/vienna-main/600/900?grayscale",
+    thumbnail: "./silhouette0.webp",
     gallery: [
-      "https://picsum.photos/seed/vienna-1/800/1200?grayscale",
-      "https://picsum.photos/seed/vienna-2/800/1200?grayscale",
-      "https://picsum.photos/seed/vienna-3/800/1200?grayscale",
-      "https://picsum.photos/seed/vienna-4/800/1200?grayscale",
-      "https://picsum.photos/seed/vienna-5/800/1200?grayscale"
+      "./silhouette2.webp",
+      "./silhouette3.webp",
+      "./silhouette4.webp",
+      "./silhouette5.webp",
+      "./silhouette6.webp"
     ],
     languages: ["English", "French"],
     featured: false,
