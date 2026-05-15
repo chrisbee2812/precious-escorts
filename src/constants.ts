@@ -48,7 +48,7 @@ export const ESCORTS: Escort[] = [
       "https://picsum.photos/seed/elara-5/800/1200?grayscale"
     ],
     languages: ["English", "French"],
-    featured: true,
+    featured: false,
     preferences: ["Solo", "Couples"],
     availability: [
       { days: "Monday - Friday", windows: ["10:00 - 16:00", "20:00 - 02:00"] },
@@ -76,7 +76,7 @@ export const ESCORTS: Escort[] = [
       "https://picsum.photos/seed/seraphina-5/800/1200?grayscale"
     ],
     languages: ["English", "Italian", "Spanish"],
-    featured: true,
+    featured: false,
     preferences: ["Solo", "Couples", "Groups"],
     availability: [
        { days: "Wednesday - Sunday", windows: ["18:00 - 02:00"] }

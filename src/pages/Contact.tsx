@@ -313,13 +313,13 @@ export function Contact() {
                 <ContactItem 
                   icon={<Mail size={18} strokeWidth={1} />} 
                   label="Email Enquiry"
-                  value="concierge@preciousescorts.com"
+                  value="preciousescorts@myyahoo.com"
                 />
-                <ContactItem 
+                {/* <ContactItem 
                   icon={<MapPin size={18} strokeWidth={1} />} 
                   label="Office"
                   value="Leeds Central, West Yorkshire, UK"
-                />
+                /> */}
               </div>
             </div>
 
