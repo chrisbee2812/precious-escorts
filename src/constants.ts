@@ -1,6 +1,17 @@
 import { Atom, Clock, Lock, HandHeart, Phone, Shield, RulerDimensionLine, Heart, SmilePlus } from "lucide-react";
 import { JSX, createElement } from "react";
 
+export interface Service {
+  id: string;
+  icon: JSX.Element;
+  title: string;
+  description: string;
+}
+export interface Availability {
+  days: string;
+  windows: string[];
+}
+
 export interface Escort {
   id: string;
   name: string;
@@ -11,250 +22,286 @@ export interface Escort {
   gallery: string[];
   languages: string[];
   featured: boolean;
+  preferences: ("Solo" | "Couples" | "Groups")[];
+  availability: Availability[];
   stats: {
-    height: string;
+    heightCm: number;
     bust: string;
     eyes: string;
     hair: string;
   };
 }
 
-export interface Service {
-  id: string;
-  icon: JSX.Element;
-  title: string;
-  description: string;
-}
-
 export const ESCORTS: Escort[] = [
   {
-    id: "elaraa",
+    id: "elara",
     name: "Elara",
     age: 24,
-    location: "London",
+    location: "Leeds",
     bio: "Elara is the embodiment of sophistication and grace. With a background in classical arts and a keen mind for deep conversation, she is the perfect companion for high-profile events or intimate evenings. Her presence is both calming and captivating, ensuring every moment spent in her company is nothing short of extraordinary.",
-    thumbnail: "https://picsum.photos/seed/elara-main/600/900",
+    thumbnail: "https://picsum.photos/seed/elara-main/600/900?grayscale",
     gallery: [
-      "https://picsum.photos/seed/elara-1/800/1200",
-      "https://picsum.photos/seed/elara-2/800/1200",
-      "https://picsum.photos/seed/elara-3/800/1200",
-      "https://picsum.photos/seed/elara-4/800/1200",
-      "https://picsum.photos/seed/elara-5/800/1200"
+      "https://picsum.photos/seed/elara-1/800/1200?grayscale",
+      "https://picsum.photos/seed/elara-2/800/1200?grayscale",
+      "https://picsum.photos/seed/elara-3/800/1200?grayscale",
+      "https://picsum.photos/seed/elara-4/800/1200?grayscale",
+      "https://picsum.photos/seed/elara-5/800/1200?grayscale"
     ],
     languages: ["English", "French"],
-    featured: false,
+    featured: true,
+    preferences: ["Solo", "Couples"],
+    availability: [
+      { days: "Monday - Friday", windows: ["10:00 - 16:00", "20:00 - 02:00"] },
+      { days: "Saturday", windows: ["14:00 - 04:00"] }
+    ],
     stats: {
-      height: "5'8\"",
+      heightCm: 172,
       bust: "34B",
       eyes: "Emerald",
       hair: "Chestnut"
     }
   },
   {
-    id: "seraphinaa",
+    id: "seraphina",
     name: "Seraphina",
     age: 26,
-    location: "Mayfair",
+    location: "Leeds Central",
     bio: "A true connoisseur of luxury and elegance. Seraphina brings an air of mystery and allure to every encounter. Whether you're dining at the finest establishments or enjoying a quiet night in, her charisma and intelligence will make the experience unforgettable.",
-    thumbnail: "https://picsum.photos/seed/seraphina-main/600/900",
+    thumbnail: "https://picsum.photos/seed/seraphina-main/600/900?grayscale",
     gallery: [
-      "https://picsum.photos/seed/seraphina-1/800/1200",
-      "https://picsum.photos/seed/seraphina-2/800/1200",
-      "https://picsum.photos/seed/seraphina-3/800/1200",
-      "https://picsum.photos/seed/seraphina-4/800/1200",
-      "https://picsum.photos/seed/seraphina-5/800/1200"
+      "https://picsum.photos/seed/seraphina-1/800/1200?grayscale",
+      "https://picsum.photos/seed/seraphina-2/800/1200?grayscale",
+      "https://picsum.photos/seed/seraphina-3/800/1200?grayscale",
+      "https://picsum.photos/seed/seraphina-4/800/1200?grayscale",
+      "https://picsum.photos/seed/seraphina-5/800/1200?grayscale"
     ],
     languages: ["English", "Italian", "Spanish"],
     featured: true,
+    preferences: ["Solo", "Couples", "Groups"],
+    availability: [
+       { days: "Wednesday - Sunday", windows: ["18:00 - 02:00"] }
+    ],
     stats: {
-      height: "5'9\"",
+      heightCm: 175,
       bust: "32C",
       eyes: "Hazel",
       hair: "Raven"
     }
   },
   {
-    id: "ariaa",
+    id: "aria",
     name: "Aria",
     age: 23,
-    location: "Kensington",
+    location: "Headingley",
     bio: "Full of life and youthful energy, Aria is as spirited as she is beautiful. Her infectious laughter and adventurous soul make her the ideal companion for those seeking a vibrant and engaging experience.",
-    thumbnail: "https://picsum.photos/seed/aria-main/600/900",
+    thumbnail: "https://picsum.photos/seed/aria-main/600/900?grayscale",
     gallery: [
-      "https://picsum.photos/seed/aria-1/800/1200",
-      "https://picsum.photos/seed/aria-2/800/1200",
-      "https://picsum.photos/seed/aria-3/800/1200",
-      "https://picsum.photos/seed/aria-4/800/1200",
-      "https://picsum.photos/seed/aria-5/800/1200"
+      "https://picsum.photos/seed/aria-1/800/1200?grayscale",
+      "https://picsum.photos/seed/aria-2/800/1200?grayscale",
+      "https://picsum.photos/seed/aria-3/800/1200?grayscale",
+      "https://picsum.photos/seed/aria-4/800/1200?grayscale",
+      "https://picsum.photos/seed/aria-5/800/1200?grayscale"
     ],
     languages: ["English"],
     featured: false,
+    preferences: ["Solo"],
+    availability: [
+      { days: "Monday - Thursday", windows: ["09:00 - 18:00"] }
+    ],
     stats: {
-      height: "5'6\"",
+      heightCm: 165,
       bust: "34C",
       eyes: "Blue",
       hair: "Blonde"
     }
   },
   {
-    id: "isabellaa",
+    id: "isabella",
     name: "Isabella",
     age: 28,
-    location: "Chelsea",
+    location: "Roundhay",
     bio: "Mature, elegant, and deeply cultured. Isabella is a world traveler with stories that fascinate and a presence that commands respect. She is the ultimate partner for a refined gentleman.",
-    thumbnail: "https://picsum.photos/seed/isabella-main/600/900",
+    thumbnail: "https://picsum.photos/seed/isabella-main/600/900?grayscale",
     gallery: [
-      "https://picsum.photos/seed/isabella-1/800/1200",
-      "https://picsum.photos/seed/isabella-2/800/1200",
-      "https://picsum.photos/seed/isabella-3/800/1200",
-      "https://picsum.photos/seed/isabella-4/800/1200",
-      "https://picsum.photos/seed/isabella-5/800/1200"
+      "https://picsum.photos/seed/isabella-1/800/1200?grayscale",
+      "https://picsum.photos/seed/isabella-2/800/1200?grayscale",
+      "https://picsum.photos/seed/isabella-3/800/1200?grayscale",
+      "https://picsum.photos/seed/isabella-4/800/1200?grayscale",
+      "https://picsum.photos/seed/isabella-5/800/1200?grayscale"
     ],
     languages: ["English", "Russian"],
     featured: false,
+    preferences: ["Solo", "Couples"],
+    availability: [
+      { days: "Friday - Sunday", windows: ["12:00 - 00:00"] }
+    ],
     stats: {
-      height: "5'10\"",
+      heightCm: 178,
       bust: "36C",
       eyes: "Brown",
       hair: "Auburn"
     }
   },
   {
-    id: "mayaa",
+    id: "maya",
     name: "Maya",
     age: 25,
-    location: "Belgravia",
+    location: "Horsforth",
     bio: "Exotic, mysterious, and incredibly attentive. Maya specializes in creating deep, personal connections. Her background in psychology allows her to read the room perfectly, making her the ideal companion for everything from high-pressure business dinners to relaxed private retreats.",
-    thumbnail: "https://picsum.photos/seed/maya-main/600/900",
+    thumbnail: "https://picsum.photos/seed/maya-main/600/900?grayscale",
     gallery: [
-      "https://picsum.photos/seed/maya-1/800/1200",
-      "https://picsum.photos/seed/maya-2/800/1200",
-      "https://picsum.photos/seed/maya-3/800/1200",
-      "https://picsum.photos/seed/maya-4/800/1200",
-      "https://picsum.photos/seed/maya-5/800/1200"
+      "https://picsum.photos/seed/maya-1/800/1200?grayscale",
+      "https://picsum.photos/seed/maya-2/800/1200?grayscale",
+      "https://picsum.photos/seed/maya-3/800/1200?grayscale",
+      "https://picsum.photos/seed/maya-4/800/1200?grayscale",
+      "https://picsum.photos/seed/maya-5/800/1200?grayscale"
     ],
     languages: ["English", "Arabic", "French"],
     featured: true,
+    preferences: ["Solo", "Couples", "Groups"],
+    availability: [
+      { days: "Monday - Saturday", windows: ["14:00 - 22:00"] }
+    ],
     stats: {
-      height: "5'7\"",
+      heightCm: 170,
       bust: "34D",
       eyes: "Amber",
       hair: "Ebony"
     }
   },
   {
-    id: "elarab",
-    name: "Elara",
-    age: 24,
-    location: "London",
-    bio: "Elara is the embodiment of sophistication and grace. With a background in classical arts and a keen mind for deep conversation, she is the perfect companion for high-profile events or intimate evenings. Her presence is both calming and captivating, ensuring every moment spent in her company is nothing short of extraordinary.",
-    thumbnail: "https://picsum.photos/seed/elara-main/600/900",
+    id: "sofia",
+    name: "Sofia",
+    age: 22,
+    location: "Leeds",
+    bio: "Sofia is a breath of fresh air. Her curious nature and love for intellectual discourse make her a unique and stimulating companion. She enjoys exploring the city's hidden gems and sharing meaningful conversations.",
+    thumbnail: "https://picsum.photos/seed/sofia-main/600/900?grayscale",
     gallery: [
-      "https://picsum.photos/seed/elara-1/800/1200",
-      "https://picsum.photos/seed/elara-2/800/1200",
-      "https://picsum.photos/seed/elara-3/800/1200",
-      "https://picsum.photos/seed/elara-4/800/1200",
-      "https://picsum.photos/seed/elara-5/800/1200"
+      "https://picsum.photos/seed/sofia-1/800/1200?grayscale",
+      "https://picsum.photos/seed/sofia-2/800/1200?grayscale",
+      "https://picsum.photos/seed/sofia-3/800/1200?grayscale",
+      "https://picsum.photos/seed/sofia-4/800/1200?grayscale",
+      "https://picsum.photos/seed/sofia-5/800/1200?grayscale"
+    ],
+    languages: ["English", "Italian"],
+    featured: false,
+    preferences: ["Solo"],
+    availability: [
+      { days: "Tuesday, Thursday, Friday", windows: ["10:00 - 18:00"] }
+    ],
+    stats: {
+      heightCm: 160,
+      bust: "32B",
+      eyes: "Blue",
+      hair: "Brunette"
+    }
+  },
+  {
+    id: "lina",
+    name: "Lina",
+    age: 27,
+    location: "Leeds",
+    bio: "Elegant and worldly, Lina possesses an innate talent for making everyone she meets feel at ease. Her extensive travels have gifted her with a wealth of fascinating stories and a broad perspective on life.",
+    thumbnail: "https://picsum.photos/seed/lina-main/600/900?grayscale",
+    gallery: [
+      "https://picsum.photos/seed/lina-1/800/1200?grayscale",
+      "https://picsum.photos/seed/lina-2/800/1200?grayscale",
+      "https://picsum.photos/seed/lina-3/800/1200?grayscale",
+      "https://picsum.photos/seed/lina-4/800/1200?grayscale",
+      "https://picsum.photos/seed/lina-5/800/1200?grayscale"
+    ],
+    languages: ["English", "French", "German"],
+    featured: false,
+    preferences: ["Solo", "Couples"],
+    availability: [
+      { days: "Monday - Sunday", windows: ["11:00 - 23:00"] }
+    ],
+    stats: {
+      heightCm: 168,
+      bust: "34C",
+      eyes: "Green",
+      hair: "Honey"
+    }
+  },
+  {
+    id: "clara",
+    name: "Clara",
+    age: 24,
+    location: "Leeds",
+    bio: "Clara's charm lies in her quiet intelligence and observant nature. She is the perfect companion for those who appreciate subtlety and a deeper connection. Her poise and grace are evident in everything she does.",
+    thumbnail: "https://picsum.photos/seed/clara-main/600/900?grayscale",
+    gallery: [
+      "https://picsum.photos/seed/clara-1/800/1200?grayscale",
+      "https://picsum.photos/seed/clara-2/800/1200?grayscale",
+      "https://picsum.photos/seed/clara-3/800/1200?grayscale",
+      "https://picsum.photos/seed/clara-4/800/1200?grayscale",
+      "https://picsum.photos/seed/clara-5/800/1200?grayscale"
+    ],
+    languages: ["English"],
+    featured: false,
+    preferences: ["Solo", "Couples"],
+    availability: [
+      { days: "Monday, Wednesday, Friday", windows: ["13:00 - 21:00"] }
+    ],
+    stats: {
+      heightCm: 158,
+      bust: "32B",
+      eyes: "Blue",
+      hair: "Platinum"
+    }
+  },
+  {
+    id: "olivia",
+    name: "Olivia",
+    age: 26,
+    location: "Leeds",
+    bio: "Olivia is a dynamic and multifaceted individual with a passion for art and culture. Her engaging personality and sharp wit make her a delight to be around, whether she's attending a gallery opening or enjoying a quiet dinner.",
+    thumbnail: "https://picsum.photos/seed/olivia-main/600/900?grayscale",
+    gallery: [
+      "https://picsum.photos/seed/olivia-1/800/1200?grayscale",
+      "https://picsum.photos/seed/olivia-2/800/1200?grayscale",
+      "https://picsum.photos/seed/olivia-3/800/1200?grayscale",
+      "https://picsum.photos/seed/olivia-4/800/1200?grayscale",
+      "https://picsum.photos/seed/olivia-5/800/1200?grayscale"
+    ],
+    languages: ["English", "Spanish"],
+    featured: true,
+    preferences: ["Solo", "Couples", "Groups"],
+    availability: [
+      { days: "Monday - Friday", windows: ["09:00 - 17:00"] }
+    ],
+    stats: {
+      heightCm: 180,
+      bust: "36D",
+      eyes: "Brown",
+      hair: "Caramel"
+    }
+  },
+  {
+    id: "vienna",
+    name: "Vienna",
+    age: 25,
+    location: "Leeds",
+    bio: "Vienna is the epitome of modern elegance. Her effortless style and sophisticated outlook on life make her a fascinating companion. She has a talent for finding the beauty in the everyday and sharing it with others.",
+    thumbnail: "https://picsum.photos/seed/vienna-main/600/900?grayscale",
+    gallery: [
+      "https://picsum.photos/seed/vienna-1/800/1200?grayscale",
+      "https://picsum.photos/seed/vienna-2/800/1200?grayscale",
+      "https://picsum.photos/seed/vienna-3/800/1200?grayscale",
+      "https://picsum.photos/seed/vienna-4/800/1200?grayscale",
+      "https://picsum.photos/seed/vienna-5/800/1200?grayscale"
     ],
     languages: ["English", "French"],
     featured: false,
+    preferences: ["Solo", "Couples"],
+    availability: [
+      { days: "Saturday - Sunday", windows: ["10:00 - 02:00"] }
+    ],
     stats: {
-      height: "5'8\"",
+      heightCm: 174,
       bust: "34B",
-      eyes: "Emerald",
-      hair: "Chestnut"
-    }
-  },
-  {
-    id: "seraphinab",
-    name: "Seraphina",
-    age: 26,
-    location: "Mayfair",
-    bio: "A true connoisseur of luxury and elegance. Seraphina brings an air of mystery and allure to every encounter. Whether you're dining at the finest establishments or enjoying a quiet night in, her charisma and intelligence will make the experience unforgettable.",
-    thumbnail: "https://picsum.photos/seed/seraphina-main/600/900",
-    gallery: [
-      "https://picsum.photos/seed/seraphina-1/800/1200",
-      "https://picsum.photos/seed/seraphina-2/800/1200",
-      "https://picsum.photos/seed/seraphina-3/800/1200",
-      "https://picsum.photos/seed/seraphina-4/800/1200",
-      "https://picsum.photos/seed/seraphina-5/800/1200"
-    ],
-    languages: ["English", "Italian", "Spanish"],
-    featured: false,
-    stats: {
-      height: "5'9\"",
-      bust: "32C",
-      eyes: "Hazel",
-      hair: "Raven"
-    }
-  },
-  {
-    id: "ariab",
-    name: "Aria",
-    age: 23,
-    location: "Kensington",
-    bio: "Full of life and youthful energy, Aria is as spirited as she is beautiful. Her infectious laughter and adventurous soul make her the ideal companion for those seeking a vibrant and engaging experience.",
-    thumbnail: "https://picsum.photos/seed/aria-main/600/900",
-    gallery: [
-      "https://picsum.photos/seed/aria-1/800/1200",
-      "https://picsum.photos/seed/aria-2/800/1200",
-      "https://picsum.photos/seed/aria-3/800/1200",
-      "https://picsum.photos/seed/aria-4/800/1200",
-      "https://picsum.photos/seed/aria-5/800/1200"
-    ],
-    languages: ["English"],
-    featured: false,
-    stats: {
-      height: "5'6\"",
-      bust: "34C",
-      eyes: "Blue",
-      hair: "Blonde"
-    }
-  },
-  {
-    id: "isabellab",
-    name: "Isabella",
-    age: 28,
-    location: "Chelsea",
-    bio: "Mature, elegant, and deeply cultured. Isabella is a world traveler with stories that fascinate and a presence that commands respect. She is the ultimate partner for a refined gentleman.",
-    thumbnail: "https://picsum.photos/seed/isabella-main/600/900",
-    gallery: [
-      "https://picsum.photos/seed/isabella-1/800/1200",
-      "https://picsum.photos/seed/isabella-2/800/1200",
-      "https://picsum.photos/seed/isabella-3/800/1200",
-      "https://picsum.photos/seed/isabella-4/800/1200",
-      "https://picsum.photos/seed/isabella-5/800/1200"
-    ],
-    languages: ["English", "Russian"],
-    featured: false,
-    stats: {
-      height: "5'10\"",
-      bust: "36C",
-      eyes: "Brown",
-      hair: "Auburn"
-    }
-  },
-  {
-    id: "mayab",
-    name: "Maya",
-    age: 25,
-    location: "Belgravia",
-    bio: "Exotic, mysterious, and incredibly attentive. Maya specializes in creating deep, personal connections. Her background in psychology allows her to read the room perfectly, making her the ideal companion for everything from high-pressure business dinners to relaxed private retreats.",
-    thumbnail: "https://picsum.photos/seed/maya-main/600/900",
-    gallery: [
-      "https://picsum.photos/seed/maya-1/800/1200",
-      "https://picsum.photos/seed/maya-2/800/1200",
-      "https://picsum.photos/seed/maya-3/800/1200",
-      "https://picsum.photos/seed/maya-4/800/1200",
-      "https://picsum.photos/seed/maya-5/800/1200"
-    ],
-    languages: ["English", "Arabic", "French"],
-    featured: false,
-    stats: {
-      height: "5'7\"",
-      bust: "34D",
-      eyes: "Amber",
-      hair: "Ebony"
+      eyes: "Grey",
+      hair: "Silver"
     }
   }
 ];

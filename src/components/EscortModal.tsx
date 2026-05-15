@@ -109,37 +109,65 @@ export function EscortModal({ escort, onClose }: EscortModalProps) {
           </div>
 
           {/* Right: Info */}
-          <div className="flex-1 p-12 md:p-16 overflow-y-auto custom-scrollbar">
+              <div className="flex-1 p-12 md:p-16 overflow-y-auto custom-scrollbar">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <h2 className="text-5xl font-display text-white mb-2">{escort.name}</h2>
+              <div className="flex justify-between items-start mb-2">
+                <h2 className="text-5xl font-display text-white">{escort.name}</h2>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-accent font-sans border border-accent/20 px-3 py-1 mt-4">
+                  {escort.location}
+                </div>
+              </div>
               <p className="text-accent italic font-display text-lg mb-8 tracking-wide">A Symphony of Grace & Intellect</p>
               
+              <div className="grid grid-cols-2 gap-x-12 gap-y-8 mb-12 border-y border-white/5 py-8">
+                <Stat label="Height" value={`${escort.stats.heightCm}cm / ${Math.floor(escort.stats.heightCm / 30.48)}'${Math.round((escort.stats.heightCm / 2.54) % 12)}"`} />
+                <Stat label="Bust" value={escort.stats.bust} />
+                <Stat label="Hair" value={escort.stats.hair} />
+                <Stat label="Eyes" value={escort.stats.eyes} />
+              </div>
+
               <p className="text-white/50 font-sans text-base leading-relaxed mb-10 font-light">
                 {escort.bio}
               </p>
 
-              <div className="space-y-4 mb-12">
-                <div className="flex justify-between border-b border-white/10 py-3 text-xs uppercase tracking-widest text-white/70">
-                  <span>In-Call (1 Hour)</span>
-                  <span className="text-accent italic">£150</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <div>
+                  <h3 className="text-[10px] uppercase tracking-[0.2em] text-accent mb-6 font-sans">Preferences</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {escort.preferences.map(pref => (
+                      <span key={pref} className="px-3 py-1 bg-white/5 border border-white/10 text-white/60 text-[10px] uppercase tracking-widest font-sans">
+                        {pref}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex justify-between border-b border-white/10 py-3 text-xs uppercase tracking-widest text-white/70">
-                  <span>Out-Call (2 Hours)</span>
-                  <span className="text-accent italic">£320</span>
-                </div>
-                <div className="flex justify-between border-b border-white/10 py-3 text-xs uppercase tracking-widest text-white/70">
-                  <span>Overnight (Out-Call)</span>
-                  <span className="text-accent italic">£900</span>
+
+                <div>
+                  <h3 className="text-[10px] uppercase tracking-[0.2em] text-accent mb-6 font-sans">Availability</h3>
+                  <div className="space-y-4">
+                    {escort.availability.map((avail, idx) => (
+                      <div key={idx} className="border-l border-white/5 pl-4">
+                        <p className="text-[10px] text-white uppercase tracking-widest mb-1">{avail.days}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {avail.windows.map((win, wIdx) => (
+                            <span key={wIdx} className="text-[10px] text-white/40 font-mono tracking-tighter">
+                              {win}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
               <button 
                 onClick={(e) => handleRequest(e)}
-                className="w-full py-5 border border-accent text-accent uppercase tracking-[0.2em] text-xs hover:bg-accent hover:text-black transition-all duration-500 font-sans"
+                className="w-full py-5 border border-accent text-accent uppercase tracking-[0.2em] text-xs hover:bg-accent hover:text-black transition-all duration-500 font-sans mt-4"
               >
                 Request Encounter
               </button>
@@ -148,5 +176,14 @@ export function EscortModal({ escort, onClose }: EscortModalProps) {
         </motion.div>
       </div>
     </AnimatePresence>
+  );
+}
+
+function Stat({ label, value }: { label: string, value: string }) {
+  return (
+    <div>
+      <h4 className="text-[10px] uppercase tracking-[0.2em] text-white/30 mb-2 font-sans">{label}</h4>
+      <p className="text-lg text-white font-display italic">{value}</p>
+    </div>
   );
 }
