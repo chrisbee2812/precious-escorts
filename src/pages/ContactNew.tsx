@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, InputHTMLAttributes } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Mail, Phone, MapPin, Send, Diamond, Heart, Upload, Image as ImageIcon, 
@@ -6,6 +6,25 @@ import {
   Clock
 } from 'lucide-react';
 import { useLocation } from 'react-router';
+
+interface InputGroupProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+  placeholder?: string;
+  type?: string;
+  required?: boolean;
+  id?: string;
+  name?: string;  
+}
+
+interface FileGroupProps {
+  label: string;
+  desc?: string;
+  required?: boolean;
+  id?: string;
+  accept?: string;
+  onChange?: (file: File | null) => void;  // ADD THIS - callback to parent
+  value?: File | null;  // OPTIONAL BUT RECOMMENDED - for controlled component
+}
 
 // --- DatePicker Components ---
 
@@ -259,6 +278,9 @@ export function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     if (location.state?.escortName) {
@@ -269,8 +291,31 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    fetch("https://www.formbackend.com/f/068f8a8354d0c373", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({ name, email, message, date: selectedDate, time: selectedTime}),
+    })
+    .then((response) => {
+      if (response.status === 422) {
+        throw new Error("Validation error");
+      } else if (!response.ok) {
+        throw new Error("Something went wrong");
+      }
+
+      return response.json();
+    })
+    .then(data => {
+      // You can even use `data` here. Access `data.submission_text`, `data.values` etc.
+      setSuccessMessage(true);
+    })
+    .catch((error) => {
+      setSuccessMessage(false);
+    });
+    // await new Promise(resolve => setTimeout(resolve, 2000));
     setIsSubmitting(false);
     setIsSubmitted(true);
   };
@@ -330,6 +375,27 @@ export function Contact() {
             className="bg-[#111] border border-white/5 p-10 md:p-16 rounded-none shadow-[0_50px_100px_rgba(0,0,0,0.5)]"
           >
             {isSubmitted ? (
+              successMessage ? (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-20"
+                >
+                  <div className="w-20 h-20 border border-accent rounded-full flex items-center justify-center mx-auto mb-10">
+                    <Send className="text-accent" size={32} strokeWidth={1} />
+                  </div>
+                  <h3 className="text-3xl font-display text-white mb-6 italic">Request Received</h3>
+                  <p className="text-white/40 font-sans font-light leading-relaxed mb-10">
+                    Your enquiry has been securely transmitted. Our concierge will review your request and contact you shortly.
+                  </p>
+                  <button 
+                    onClick={() => setIsSubmitted(false)}
+                    className="text-accent border-b border-accent/40 pb-1 hover:border-accent transition-all text-xs uppercase tracking-widest font-sans"
+                  >
+                    Send another message
+                  </button>
+                </motion.div>
+            ) : ( 
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -340,7 +406,7 @@ export function Contact() {
                 </div>
                 <h3 className="text-3xl font-display text-white mb-6 italic">Request Received</h3>
                 <p className="text-white/40 font-sans font-light leading-relaxed mb-10">
-                  Your enquiry has been securely transmitted. Our concierge will review your request and contact you shortly.
+                  Your enquiry has failed transmission. Please retry shortly. If the issue persists, contact us directly at preciousescorts@myyahoo.com.
                 </p>
                 <button 
                   onClick={() => setIsSubmitted(false)}
@@ -349,11 +415,22 @@ export function Contact() {
                   Send another message
                 </button>
               </motion.div>
-            ) : (
+            )) : (
               <form className="space-y-10" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                  <InputGroup label="Full Name" placeholder="Your name" required />
-                  <InputGroup label="Email Address" placeholder="your@email.com" type="email" required />
+                  <InputGroup 
+                    label="Full Name" 
+                    placeholder="Your name" 
+                    required 
+                    onChange={(e) => setName(e.target.value)} 
+                  />
+                  <InputGroup 
+                    label="Email Address" 
+                    placeholder="your@email.com" 
+                    type="email" 
+                    required 
+                    onChange={(e) => setEmail(e.target.value)} 
+                  />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <CustomDateInput 
@@ -414,8 +491,17 @@ function ContactItem({ icon, label, value }: { icon: React.ReactNode, label: str
   );
 }
 
-export function InputGroup({ label, placeholder = "", type = "text", required = false, id, name }: { label: string, placeholder?: string, type?: string, required?: boolean, id?: string, name?: string }) {
+export function InputGroup({ 
+  label, 
+  placeholder = "", 
+  type = "text", 
+  required = false, 
+  id, 
+  name,
+  ...rest  // This now includes onChange, value, onBlur, etc. with correct types
+}: InputGroupProps) {
   const fieldId = id || label.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+  
   return (
     <div className="space-y-4">
       <div className="min-h-10 flex items-end">
@@ -427,33 +513,68 @@ export function InputGroup({ label, placeholder = "", type = "text", required = 
         type={type}
         placeholder={placeholder}
         required={required}
+        {...rest}
         className="w-full bg-black/40 border border-white/10 focus:border-accent p-6 text-white outline-none transition-colors rounded-none font-sans font-light text-sm"
       />
     </div>
   );
 }
 
-export function FileGroup({ label, desc, required = false, id }: { label: string, desc: string, required?: boolean, id?: string }) {
-  const [file, setFile] = useState<File | null>(null);
+export function FileGroup({ 
+  label, 
+  desc, 
+  required = false, 
+  id, 
+  accept,
+  onChange,  // ADD TO DESTRUCTURING
+  value: externalFile  // ADD THIS - allows parent to control the file
+}: FileGroupProps) {
+  // Use either external value (if provided) or internal state
+  const [internalFile, setInternalFile] = useState<File | null>(null);
+  const file = externalFile !== undefined ? externalFile : internalFile;
+  
   const [preview, setPreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const fieldId = id || label.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0];
+    const selectedFile = e.target.files?.[0] || null;
+    
+    // Update internal state if not controlled externally
+    if (externalFile === undefined) {
+      setInternalFile(selectedFile);
+    }
+    
+    // NOTIFY THE PARENT
+    if (onChange) {
+      onChange(selectedFile);
+    }
+    
+    // Handle preview
     if (selectedFile) {
-      setFile(selectedFile);
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreview(reader.result as string);
       };
       reader.readAsDataURL(selectedFile);
+    } else {
+      setPreview(null);
     }
   };
 
   const removeFile = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setFile(null);
+    
+    // Clear internal state if not controlled externally
+    if (externalFile === undefined) {
+      setInternalFile(null);
+    }
+    
+    // NOTIFY THE PARENT
+    if (onChange) {
+      onChange(null);
+    }
+    
     setPreview(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
@@ -470,7 +591,16 @@ export function FileGroup({ label, desc, required = false, id }: { label: string
     e.stopPropagation();
     const selectedFile = e.dataTransfer.files?.[0];
     if (selectedFile && selectedFile.type.startsWith('image/')) {
-      setFile(selectedFile);
+      // Update internal state if not controlled externally
+      if (externalFile === undefined) {
+        setInternalFile(selectedFile);
+      }
+
+      // NOTIFY THE PARENT
+      if (onChange) {
+        onChange(selectedFile);
+      }
+
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreview(reader.result as string);
@@ -481,7 +611,7 @@ export function FileGroup({ label, desc, required = false, id }: { label: string
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-between items-end min-h-10">
+      <div className="flex justify-between items-start min-h-18">
         <div>
           <label htmlFor={fieldId} className="text-[10px] uppercase tracking-[0.2em] text-accent font-sans block mb-1">{label}</label>
           <span className="text-[10px] text-white/20 font-sans tracking-wider uppercase leading-tight">{desc}</span>
@@ -501,7 +631,7 @@ export function FileGroup({ label, desc, required = false, id }: { label: string
           type="file" 
           ref={fileInputRef}
           onChange={handleFileChange}
-          accept="image/*"
+          accept={accept}
           className="hidden"
           required={required && !file}
         />
@@ -539,16 +669,99 @@ export function FileGroup({ label, desc, required = false, id }: { label: string
 }
 
 export function WorkWithUs() {
+  const location = useLocation();
+  const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<boolean | null>(null);
+  const [stageName, setStageName] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
+  const [nationality, setNationality] = useState("");
+  const [locationCity, setLocationCity] = useState("");
+  const [phone, setPhone] = useState("");
+  const [bustSize, setBustSize] = useState("");
+  const [dressSize, setDressSize] = useState("");
+  const [hairColour, setHairColour] = useState("");
+  const [eyeColour, setEyeColour] = useState("");
+  const [markings, setMarkings] = useState("");
+  const [imageFile1, setImageFile1] = useState<File | null>(null);
+  const [imageFile2, setImageFile2] = useState<File | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 2500));
+    // Create FormData object
+  const formData = new FormData();
+
+  // Append text fields
+  formData.append("stageName", stageName);
+  formData.append("name", name);
+  formData.append("email", email);
+  formData.append("age", age);
+  formData.append("nationality", nationality);
+  formData.append("locationCity", locationCity);
+  formData.append("phone", phone);
+  formData.append("bustSize", bustSize);
+  formData.append("dressSize", dressSize);
+  formData.append("hairColour", hairColour);
+  formData.append("eyeColour", eyeColour);
+  formData.append("markings", markings);
+  formData.append("message", message);
+
+  // Append files (if they exist)
+  if (imageFile1) {
+    formData.append("imageFile1", imageFile1);
+  }
+  if (imageFile2) {
+    formData.append("imageFile2", imageFile2);
+  }
+
+  for (let [key, value] of formData.entries()) {
+  if (value instanceof File) {
+    console.log(`${key}: ${value.name} (${value.size} bytes, type: ${value.type})`);
+  } else {
+    console.log(`${key}: ${value}`);
+  }
+}
+
+  try {
+    const response = await fetch("https://www.formbackend.com/f/8392252a9627a277", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",  // Tell server you want JSON back
+      },
+      // IMPORTANT: Do NOT set Content-Type header with FormData
+      // The browser will set it automatically with the correct boundary
+      body: formData,
+    });
+
+    console.log("Response Status:", response.status);
+
+    if (response.status === 422) {
+      throw new Error("Validation error");
+    } else if (!response.ok) {
+      throw new Error("Something went wrong");
+    }
+
+    const data = await response.json();
+    console.log("Form submission response:", data);
+    if (data && !data.error) {
+    setSuccessMessage(true);   // ✅ Success
+  } else {
+    console.error("Submission failed according to API response:", data);
+    setSuccessMessage(false);  // ❌ Failed
+  }
+} catch (error) {
+  console.error("Network or parsing error:", error);
+  setSuccessMessage(false);    // ❌ Failed
+} finally {
     setIsSubmitting(false);
     setIsSubmitted(true);
-  };
+  }
+};
+
 
   return (
     <div className="pt-32 pb-32 min-h-screen bg-bg px-15">
@@ -562,52 +775,139 @@ export function WorkWithUs() {
 
         <section className="bg-[#111] border border-white/5 p-10 md:p-20 rounded-none shadow-[0_50px_100px_rgba(0,0,0,0.5)] mb-32">
           {isSubmitted ? (
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-20"
-            >
-              <div className="w-20 h-20 border border-accent rounded-full flex items-center justify-center mx-auto mb-10">
-                <Heart className="text-accent" size={32} strokeWidth={1} />
-              </div>
-              <h3 className="text-3xl font-display text-white mb-6 italic">Dossier Received</h3>
-              <p className="text-white/40 font-sans font-light leading-relaxed mb-10">
-                Thank you for your interest. Your application has been encrypted and sent to our recruitment team. We will contact you if your profile matches our requirements.
-              </p>
-              <button 
-                onClick={() => setIsSubmitted(false)}
-                className="text-accent border-b border-accent/40 pb-1 hover:border-accent transition-all text-xs uppercase tracking-widest font-sans"
+              successMessage === true ? (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-20"
+                >
+                  <div className="w-20 h-20 border border-accent rounded-full flex items-center justify-center mx-auto mb-10">
+                    <Send className="text-accent" size={32} strokeWidth={1} />
+                  </div>
+                  <h3 className="text-3xl font-display text-white mb-6 italic">Request Received</h3>
+                  <p className="text-white/40 font-sans font-light leading-relaxed mb-10">
+                    Your enquiry has been securely transmitted. Our concierge will review your request and contact you shortly.
+                  </p>
+                  <button 
+                    onClick={() => setIsSubmitted(false)}
+                    className="text-accent border-b border-accent/40 pb-1 hover:border-accent transition-all text-xs uppercase tracking-widest font-sans"
+                  >
+                    Send another message
+                  </button>
+                </motion.div>
+            ) : successMessage === false ? (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-20"
               >
-                Submit another application
-              </button>
-            </motion.div>
-          ) : (
+                <div className="w-20 h-20 border border-accent rounded-full flex items-center justify-center mx-auto mb-10">
+                  <Send className="text-accent" size={32} strokeWidth={1} />
+                </div>
+                <h3 className="text-3xl font-display text-white mb-6 italic">Request Received</h3>
+                <p className="text-white/40 font-sans font-light leading-relaxed mb-10">
+                  Your enquiry has failed transmission. Please retry shortly. If the issue persists, contact us directly at preciousescorts@myyahoo.com.
+                </p>
+                <button 
+                  onClick={() => setIsSubmitted(false)}
+                  className="text-accent border-b border-accent/40 pb-1 hover:border-accent transition-all text-xs uppercase tracking-widest font-sans"
+                >
+                  Send another message
+                </button>
+              </motion.div>
+            ) : null ) : (
             <form className="space-y-12" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <InputGroup label="Stage Name" placeholder="Your chosen name" required />
-                <InputGroup label="Real Name" placeholder="Legal name (confidential)" required />
-                <InputGroup label="Age" placeholder="Your age (18+ only)" type="number" required />
-                <InputGroup label="Nationality" placeholder="Your nationality" required />
-                <InputGroup label="Location" placeholder="Current city" required />
-                <InputGroup label="Email" placeholder="your@email.com" type="email" required />
-                <InputGroup label="WhatsApp/Phone" placeholder="+44 ..." required />
-                <InputGroup label="Bust Size" placeholder="e.g. 32B" required />
-                <InputGroup label="Dress Size" placeholder="e.g. 8" required />
-                <InputGroup label="Hair Colour" placeholder="e.g. Brunette" required />
-                <InputGroup label="Eye Colour" placeholder="e.g. Hazel" required />
-                <InputGroup label="Tattoos/Piercings" placeholder="Details of any markings" required />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+                <InputGroup 
+                  label="Stage Name" 
+                  placeholder="Your chosen name" 
+                  required
+                  onChange={(e) => setStageName(e.target.value)}
+                />
+                <InputGroup 
+                  label="Real Name" 
+                  placeholder="Legal name (confidential)" 
+                  required 
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <InputGroup 
+                  label="Age" 
+                  placeholder="Your age (18+ only)" 
+                  type="number" 
+                  required 
+                  onChange={(e) => setAge(e.target.value)}
+                />
+                <InputGroup 
+                  label="Nationality" 
+                  placeholder="Your nationality" 
+                  required 
+                  onChange={(e) => setNationality(e.target.value)}
+                />
+                <InputGroup 
+                  label="Location" 
+                  placeholder="Current city" 
+                  required 
+                  onChange={(e) => setLocationCity(e.target.value)}
+                />
+                <InputGroup 
+                  label="Email" 
+                  placeholder="your@email.com" 
+                  type="email" 
+                  required 
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <InputGroup 
+                  label="WhatsApp/Phone" 
+                  placeholder="+44 ..." 
+                  required 
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+                <InputGroup 
+                  label="Bust Size" 
+                  placeholder="e.g. 32B" 
+                  required 
+                  onChange={(e) => setBustSize(e.target.value)}
+                />
+                <InputGroup 
+                  label="Dress Size" 
+                  placeholder="e.g. 8" 
+                  required 
+                  onChange={(e) => setDressSize(e.target.value)}
+                />
+                <InputGroup 
+                  label="Hair Colour" 
+                  placeholder="e.g. Brunette" 
+                  required 
+                  onChange={(e) => setHairColour(e.target.value)}
+                />
+                <InputGroup 
+                  label="Eye Colour" 
+                  placeholder="e.g. Hazel" 
+                  required 
+                  onChange={(e) => setEyeColour(e.target.value)}
+                />
+                <InputGroup 
+                  label="Tattoos/Piercings" 
+                  placeholder="Details of any markings" 
+                  required 
+                  onChange={(e) => setMarkings(e.target.value)}
+                />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 pt-8">
                 <FileGroup 
                   label="Portrait Shot" 
                   desc="Clear image focusing on your face" 
                   required 
+                  onChange={(file) => setImageFile1(file)}
+                  accept="image/*"
                 />
                 <FileGroup 
                   label="Full Body Shot" 
                   desc="Recent clothed image showing your silhouette" 
                   required 
+                  onChange={(file) => setImageFile2(file)}
+                  accept="image/*"
                 />
               </div>
 
@@ -619,6 +919,7 @@ export function WorkWithUs() {
                   rows={5}
                   placeholder="Tell us about yourself, your languages, and why you'd like to work with Precious Escorts..."
                   required
+                  onChange={(e) => setMessage(e.target.value)}
                   className="w-full bg-black/40 border border-white/10 focus:border-accent p-6 text-white outline-none transition-colors rounded-none font-sans font-light resize-none text-sm"
                 />
               </div>

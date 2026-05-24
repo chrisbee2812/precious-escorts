@@ -191,7 +191,7 @@ const CONTENT: Record<string, LegalContent> = {
             bullets: [
               'Greet the companion warmly and respectfully',
               'Offer to take their coat or bag if appropriate',
-              'Allow them to feel comfortable in the space before initiating any physical contact',
+              'Allow them to feel comfortable in the space',
               'Place the donation in plain sight in an unsealed envelope, or as previously arranged'
             ]
           },
