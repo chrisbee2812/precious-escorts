@@ -308,7 +308,7 @@ export function Contact() {
                 <ContactItem 
                   icon={<Phone size={18} strokeWidth={1} />} 
                   label="Concierge Line"
-                  value="+44 (0) 20 1234 5678"
+                  value="+44 7728 504860"
                 />
                 <ContactItem 
                   icon={<Mail size={18} strokeWidth={1} />} 
