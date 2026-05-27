@@ -362,7 +362,7 @@ export function Contact() {
                 Booking Hours
               </h3>
               <ul className="text-[11px] text-white/40 space-y-4 font-sans tracking-[0.2em] uppercase">
-                <li className="flex justify-between border-b border-white/5 pb-2"><span>7 Days a week</span> <span className="text-white">09AM - 03AM</span></li>
+                <li className="flex justify-between border-b border-white/5 pb-2"><span>7 Days a week</span> <span className="text-white">09 am - 03 am</span></li>
                 {/* <li className="flex justify-between border-b border-white/5 pb-2"><span>Saturday</span> <span className="text-white">10:00 - 20:00</span></li>
                 <li className="flex justify-between"><span>Sunday</span> <span className="text-white">By appointment</span></li> */}
               </ul>
