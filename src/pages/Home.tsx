@@ -58,7 +58,7 @@ export function Home() {
             transition={{ duration: 1.2 }}
             className="text-5xl sm:text-7xl md:text-[120px] font-display text-accent mb-8 leading-[0.9] tracking-tighter"
           >
-            Unrivaled <br/>Sophistication.
+            Simple <br/>Pleasure.
           </motion.h1>
           
           <div className="h-25 mb-12">

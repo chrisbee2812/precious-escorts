@@ -49,7 +49,7 @@ const CONTENT: Record<string, LegalContent> = {
         subsections: [
           {
             title: 'Client Cancellation',
-            content: 'Cancellations made more than [X] hours before the scheduled booking time may be eligible for a full refund or rescheduling. Cancellations made within [X] hours of the booking time will incur a [Y]% cancellation fee.'
+            content: 'Cancellations made more than 1 hour before the scheduled booking time may be eligible for a full refund or rescheduling. Cancellations made within 1 hour of the booking time will incur a £70 cancellation fee.'
           },
           {
             title: 'Agency Cancellation',
@@ -120,7 +120,7 @@ const CONTENT: Record<string, LegalContent> = {
       },
       {
         title: 'No Medical or Legal Advice',
-        content: 'Nothing on this website constitutes medical, legal, or professional advice. If you require advice on any matter relating to sexual health, legal compliance, or personal safety, you should consult appropriately qualified professionals.'
+        content: 'Nothing on this website constitutes medical, legal, or professional advice. If you require advice on any matter relating to legal compliance or personal safety, you should consult appropriately qualified professionals.'
       },
       {
         title: 'Third-Party Links',
@@ -215,8 +215,6 @@ const CONTENT: Record<string, LegalContent> = {
           {
             title: 'Boundaries and Consent',
             bullets: [
-              'Understand that "no" means no, without explanation required',
-              'Do not push for activities that were not discussed or agreed upon',
               'Respect physical boundaries at all times',
               'If you are unsure whether something is welcome, ask politely and accept the answer gracefully'
             ]
