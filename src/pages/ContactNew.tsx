@@ -337,25 +337,25 @@ export function Contact() {
             className="space-y-12"
           >
             <div>
-              <h2 className="text-3xl font-display text-white mb-10 italic">Get in Touch</h2>
-              <div className="space-y-10">
-                <ContactItem 
-                  icon={<Phone size={18} strokeWidth={1} />} 
-                  label="Concierge Line"
-                  value="+44 (0) 20 1234 5678"
-                />
-                <ContactItem 
-                  icon={<Mail size={18} strokeWidth={1} />} 
-                  label="Email Enquiry"
-                  value="concierge@preciousescorts.com"
-                />
-                <ContactItem 
-                  icon={<MapPin size={18} strokeWidth={1} />} 
-                  label="Office"
-                  value="Leeds Central, West Yorkshire, UK"
-                />
-              </div>
-            </div>
+                          <h2 className="text-3xl font-display text-white mb-10 italic">Get in Touch</h2>
+                          <div className="space-y-10">
+                            <ContactItem 
+                              icon={<Phone size={18} strokeWidth={1} />} 
+                              label="Concierge Line"
+                              value="+44 7728 504860"
+                            />
+                            <ContactItem 
+                              icon={<Mail size={18} strokeWidth={1} />} 
+                              label="Email Enquiry"
+                              value="preciousescorts@myyahoo.com"
+                            />
+                            {/* <ContactItem 
+                              icon={<MapPin size={18} strokeWidth={1} />} 
+                              label="Office"
+                              value="Leeds Central, West Yorkshire, UK"
+                            /> */}
+                          </div>
+                        </div>
 
             <div className="p-10 border border-white/5 bg-[#111] rounded-none">
               <h3 className="text-accent font-display text-xl mb-6 flex items-center gap-3 italic">
