@@ -8,6 +8,10 @@ const FAQS = [
     answer: "You can book by contacting our concierge via phone or the contact form on our website. We will discuss your requirements and confirm availability."
   },
   {
+    question: "Do you accept disabled clients?",
+    answer: "Yes, absolutely. We warmly welcome disabled clients and are committed to providing inclusive, respectful, and tailored companionship. Please let us know during the booking process if you have any specific access needs or requirements, and we will do our best to accommodate them with discretion and care."
+  },
+  {
     question: "Is discretion guaranteed?",
     answer: "Absolutely. Precious Escorts is built on a foundation of absolute privacy. We do not store sensitive client data and all meetings are handled with the utmost discretion."
   },

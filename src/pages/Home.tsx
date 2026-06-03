@@ -7,9 +7,10 @@ import { EscortCard } from '@/src/components/EscortCard';
 import { EscortModal } from '@/src/components/EscortModal';
 
 const HERO_TEXTS = [
-  "Bespoke companionship tailored to your expectations. Discover a world of refined beauty and intellectual charm across Leeds.",
+  "Bespoke companionship tailored to your expectations — including warmly welcoming disabled clients. Discover a world of refined beauty and intellectual charm across Leeds.",
   "The ultimate destination for social engagement. We provide discreet, professional, and unforgettable experiences for our clientele.",
   "Elegance redefined for the modern man. Experience the finest companionship curated with absolute discretion.",
+  "We proudly welcome clients of all abilities — personalized, respectful companionship designed to be accessible and enjoyable for everyone.",
   "Want the hottest escort company in Leeds? That's Precious Escorts. For almost 15 years, we've been giving those in the know exactly what they crave — unforgettable company."
 ];
 
