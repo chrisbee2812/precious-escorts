@@ -24,20 +24,20 @@ export default function App() {
     <Router>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-black">
-        <Navbar />
+        {/* <Navbar /> */}
         <main className="grow pt-20">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/gallery" element={<Gallery />} />
+            {/* <Route path="/gallery" element={<Gallery />} />
             <Route path="/about" element={<About />} />
             <Route path="/rates" element={<Rates />} />
             <Route path="/work-with-us" element={<WorkWithUs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/faq" element={<FAQ />} />
-            <Route path="/:type" element={<Legal />} />
+            <Route path="/:type" element={<Legal />} /> */}
           </Routes>
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
   );
